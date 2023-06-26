@@ -26,6 +26,11 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+input,
+textarea {
+  color: rgb(var(--background-start-rgb));
+}
+
 .app {
   @apply relative z-10 flex flex-col max-w-7xl mx-auto sm:px-16 px-6;
 }
