@@ -79,21 +79,23 @@ const Home = (props: Props) => {
                 );
               case "radio":
                 if (Array.isArray(value)) {
-                  return value.map((val) => {
-                    return (
-                      <>
-                        <label>
-                          <input
-                            type="radio"
-                            name={id}
-                            value={val}
-                            onChange={(e) => handleChange(e, id)}
-                          />
-                          {val}
-                        </label>
-                      </>
-                    );
-                  });
+                  return (
+                    <div>
+                      {value.map((val) => (
+                        <>
+                          <label>
+                            <input
+                              type="radio"
+                              name={id}
+                              value={val}
+                              onChange={(e) => handleChange(e, id)}
+                            />
+                            {val}
+                          </label>
+                        </>
+                      ))}
+                    </div>
+                  );
                 }
               case "checkbox":
                 return (
