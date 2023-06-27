@@ -6,24 +6,43 @@ type Props = {};
 const Home = (props: Props) => {
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
-  const [fields, setFields] = useState({
-    field1: "",
-    field2: "",
-    myRadio: "",
-    myCheckbox: false,
-  });
+  const initialFields = [
+    { id: "0", type: "text", value: "" },
+    { id: "1", type: "text", value: "" },
+    {
+      id: "2",
+      type: "radio",
+      value: ["opt1", "opt2", "opt3"],
+      chosenValue: "",
+    },
+    { id: "3", type: "checkbox", value: false },
+    { id: "4", type: "checkbox", value: false },
+    { id: "5", type: "checkbox", value: false },
+    { id: "6", type: "checkbox", value: false },
+  ];
+  const [fields, setFields] = useState(initialFields);
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: any, id: string) => {
     const { name, value, checked } = e.target;
-    console.log(e.target.type);
+
     if (e.target.type == "checkbox") {
-      setFields((prev) => {
-        return { ...prev, [name]: checked };
-      });
+      setFields(
+        fields.map((item) =>
+          item.id === id ? { ...item, value: checked } : item
+        )
+      );
+    } else if (e.target.type == "radio") {
+      setFields(
+        fields.map((item) =>
+          item.id === id ? { ...item, chosenValue: value } : item
+        )
+      );
     } else {
-      setFields((prev) => {
-        return { ...prev, [name]: value };
-      });
+      setFields(
+        fields.map((item) =>
+          item.id === id ? { ...item, value: value } : item
+        )
+      );
     }
   };
 
@@ -38,59 +57,79 @@ const Home = (props: Props) => {
   return (
     <div className="flex">
       {/* LEFT */}
-      <div className="flex flex-col gap-5 p-10 flex-1">
-        <label>
-          hey: <input type="text" name="field1" onChange={handleChange} />
-        </label>
-        <label>
-          hey2: <input type="text" name="field2" onChange={handleChange} />
-        </label>
-        <p>
-          Radio buttons:
-          <label>
-            <input
-              type="radio"
-              name="myRadio"
-              value="option1"
-              onChange={handleChange}
-            />
-            Option 1
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="myRadio"
-              value="option2"
-              onChange={handleChange}
-            />
-            Option 2
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="myRadio"
-              value="option3"
-              onChange={handleChange}
-            />
-            Option 3
-          </label>
-        </p>
-        <label>
-          Checkbox:{" "}
-          <input type="checkbox" name="myCheckbox" onChange={handleChange} />
-        </label>
+      <div className="flex flex-col p-10 flex-1">
+        <div>
+          {fields.map(({ id, type, value }, index) => {
+            switch (type) {
+              case "text":
+                return (
+                  <>
+                    <div key={index}>
+                      <label key={index}>
+                        {id}
+                        {": "}
+                        <input
+                          type="text"
+                          name={id}
+                          onChange={(e) => handleChange(e, id)}
+                        />
+                      </label>
+                    </div>
+                  </>
+                );
+              case "radio":
+                if (Array.isArray(value)) {
+                  return value.map((val) => {
+                    return (
+                      <>
+                        <label>
+                          <input
+                            type="radio"
+                            name={id}
+                            value={val}
+                            onChange={(e) => handleChange(e, id)}
+                          />
+                          {val}
+                        </label>
+                      </>
+                    );
+                  });
+                }
+              case "checkbox":
+                return (
+                  <>
+                    <label>
+                      Checkbox:{" "}
+                      <input
+                        type="checkbox"
+                        name="myCheckbox"
+                        onChange={(e) => handleChange(e, id)}
+                      />
+                    </label>
+                  </>
+                );
+              default:
+                return "";
+            }
+          })}
+        </div>
       </div>
       {/* RIGHT */}
       <div className="flex flex-col gap-5 p-10 flex-1">
         <textarea
           ref={textAreaRef}
           rows={20}
-          value={
-            (fields.field1 && "value1 is here: " + fields.field1 + "\n") +
-            (fields.field2 && "value2 is here: " + fields.field2 + "\n") +
-            (fields.myRadio && "myRadio is here: " + fields.myRadio + "\n") +
-            (fields.myCheckbox == true ? "myCheckbox is checked" + "\n" : "")
-          }
+          value={fields
+            .map((field) => {
+              if (field.type === "checkbox") {
+                return `checkbox: ${field.value} \n`;
+              } else if (field.type === "text") {
+                return `text: ${field.value} \n`;
+              } else if (field.type === "radio") {
+                return `radio: ${field.chosenValue} \n`;
+              }
+            })
+            .join("")}
           readOnly={true}
         ></textarea>
         <button
