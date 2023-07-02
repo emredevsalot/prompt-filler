@@ -1,49 +1,76 @@
 "use client";
-import { useRef, useState } from "react";
+import { useRef } from "react";
+import Select from "react-select";
+import { useForm, Controller } from "react-hook-form";
 
-type Props = {};
+type FieldType = {
+  name: string;
+  before?: string;
+  after?: string;
+  type: string;
+  options?: { value: string; label: string }[];
+};
 
-const Home = (props: Props) => {
+const Home = () => {
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
-  const initialFields = [
-    { id: "0", type: "text", value: "" },
-    { id: "1", type: "text", value: "" },
+  const { register, handleSubmit, control, watch } = useForm();
+
+  const fields: FieldType[] = [
     {
-      id: "2",
-      type: "radio",
-      value: ["opt1", "opt2", "opt3"],
-      chosenValue: "",
+      name: "textarea",
+      before: "[area_b]",
+      after: "[area_a]",
+      type: "textarea",
     },
-    { id: "3", type: "checkbox", value: false },
-    { id: "4", type: "checkbox", value: false },
-    { id: "5", type: "checkbox", value: false },
-    { id: "6", type: "checkbox", value: false },
+    { name: "text1", before: "[b1]", after: "[a1]", type: "text" },
+    { name: "text2", before: "[b2]", after: "", type: "text" },
+    { name: "text3", before: "[b3]", after: "[a3]", type: "text" },
+    {
+      name: "select1",
+      before: "b_select1",
+      after: "a_select1",
+      type: "select",
+      options: [
+        { value: "one", label: "one" },
+        { value: "two", label: "two" },
+        { value: "three", label: "three" },
+      ],
+    },
+    {
+      name: "select2",
+      before: "b_select2",
+      after: "a_select2",
+      type: "multiselect",
+      options: [
+        { value: "one", label: "one" },
+        { value: "two", label: "two" },
+        { value: "three", label: "three" },
+      ],
+    },
   ];
-  const [fields, setFields] = useState(initialFields);
 
-  const handleChange = (e: any, id: string) => {
-    const { name, value, checked } = e.target;
+  const watchAllFields = watch();
+  console.log(watchAllFields);
 
-    if (e.target.type == "checkbox") {
-      setFields(
-        fields.map((item) =>
-          item.id === id ? { ...item, value: checked } : item
-        )
-      );
-    } else if (e.target.type == "radio") {
-      setFields(
-        fields.map((item) =>
-          item.id === id ? { ...item, chosenValue: value } : item
-        )
-      );
-    } else {
-      setFields(
-        fields.map((item) =>
-          item.id === id ? { ...item, value: value } : item
-        )
-      );
-    }
+  const generateFinalText = () => {
+    let finalText: string[] = [];
+    fields.map((item) => {
+      let fullField: string = "";
+
+      // If field is empty, do nothing.
+      if (!watchAllFields[item.name]) return;
+      // If multiselect is empty, do nothing:
+      if (watchAllFields[item.name].length == 0) return;
+
+      fullField += item.before ? item.before + " " : "";
+      fullField += watchAllFields[item.name];
+      fullField += item.after ? " " + item.after : "";
+      fullField += ".";
+
+      finalText.push(fullField);
+    });
+    return finalText.join("\n");
   };
 
   const handleCopy = () => {
@@ -52,86 +79,98 @@ const Home = (props: Props) => {
     }
   };
 
-  console.log(fields);
-
   return (
     <div className="flex">
       {/* LEFT */}
       <div className="flex flex-col p-10 flex-1">
-        <div>
-          {fields.map(({ id, type, value }, index) => {
-            switch (type) {
+        <form onSubmit={handleSubmit((data: any) => console.log(data))}>
+          {fields.map((f) => {
+            switch (f.type) {
               case "text":
                 return (
-                  <>
-                    <div key={index}>
-                      <label key={index}>
-                        {id}
-                        {": "}
-                        <input
-                          type="text"
-                          name={id}
-                          onChange={(e) => handleChange(e, id)}
-                        />
-                      </label>
-                    </div>
-                  </>
+                  <div className="my-5" key={f.name}>
+                    <div>{f.name + ": "}</div>
+                    <input
+                      className="w-full"
+                      type={f.type}
+                      placeholder={f.name}
+                      {...register(f.name)}
+                    />
+                  </div>
                 );
-              case "radio":
-                if (Array.isArray(value)) {
-                  return (
-                    <div>
-                      {value.map((val) => (
-                        <>
-                          <label>
-                            <input
-                              type="radio"
-                              name={id}
-                              value={val}
-                              onChange={(e) => handleChange(e, id)}
-                            />
-                            {val}
-                          </label>
-                        </>
-                      ))}
-                    </div>
-                  );
-                }
-              case "checkbox":
+              case "textarea":
                 return (
-                  <>
-                    <label>
-                      Checkbox:{" "}
-                      <input
-                        type="checkbox"
-                        name="myCheckbox"
-                        onChange={(e) => handleChange(e, id)}
-                      />
-                    </label>
-                  </>
+                  <div className="my-5" key={f.name}>
+                    <div>{f.name + ": "}</div>
+                    <textarea
+                      className="w-full"
+                      {...register(f.name)}
+                      rows={10}
+                    ></textarea>
+                  </div>
+                );
+
+              case "select":
+                return (
+                  <div className="my-5" key={f.name}>
+                    <div>{f.name + ": "}</div>
+                    <Controller
+                      control={control}
+                      defaultValue={""}
+                      name={f.name}
+                      render={({ field: { onChange, value } }) => (
+                        <Select
+                          instanceId={f.name}
+                          className="text-black"
+                          value={f.options?.filter((c) =>
+                            value.includes(c.value)
+                          )}
+                          onChange={(val) => onChange(val?.value)}
+                          options={f.options}
+                        />
+                      )}
+                    />
+                  </div>
+                );
+              case "multiselect":
+                return (
+                  <div className="my-5" key={f.name}>
+                    <div>
+                      <div>{f.name + ": "}</div>
+                    </div>
+                    <Controller
+                      control={control}
+                      defaultValue={[]}
+                      name={f.name}
+                      render={({ field: { onChange, value } }) => (
+                        <Select
+                          instanceId={f.name}
+                          className="text-black"
+                          value={f.options?.filter((c: any) =>
+                            value.includes(c.value)
+                          )}
+                          onChange={(val) => onChange(val.map((c) => c.value))}
+                          options={f.options}
+                          isMulti
+                        />
+                      )}
+                    />
+                  </div>
                 );
               default:
                 return "";
             }
           })}
-        </div>
+
+          {/* <button type="submit">Submit</button> */}
+        </form>
       </div>
       {/* RIGHT */}
       <div className="flex flex-col gap-5 p-10 flex-1">
         <textarea
           ref={textAreaRef}
           rows={20}
-          value={fields
-            .map((field) => {
-              if (field.type === "checkbox") {
-                return `checkbox: ${field.value} \n`;
-              } else if (field.type === "text") {
-                return `text: ${field.value} \n`;
-              } else if (field.type === "radio") {
-                return `radio: ${field.chosenValue} \n`;
-              }
-            })
-            .join("")}
+          value={generateFinalText()}
           readOnly={true}
         ></textarea>
         <button
