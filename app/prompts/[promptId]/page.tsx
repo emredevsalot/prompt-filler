@@ -47,11 +47,16 @@ const PromptPage = ({ params: { promptId } }: Params) => {
 
   // Copy Prompt
   const [isCopied, setIsCopied] = useState(false);
-  const handleCopy = () => {
+  const handleCopy = async () => {
     if (textAreaRef.current) {
-      setIsCopied(true);
-      navigator.clipboard.writeText(textAreaRef.current.value);
-      setTimeout(() => setIsCopied(false), 2000);
+      if (textAreaRef.current.value == "") return;
+      try {
+        setIsCopied(true);
+        navigator.clipboard.writeText(textAreaRef.current.value);
+        setTimeout(() => setIsCopied(false), 2000);
+      } catch (error) {
+        console.error("Failed to copy text:", error);
+      }
     }
   };
 
