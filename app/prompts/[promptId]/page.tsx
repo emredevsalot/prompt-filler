@@ -95,6 +95,8 @@ const PromptPage = ({ params: { promptId } }: Params) => {
         Prompt name: {prompt.name}
         {" | "}
         Category: {prompt.category}
+        {" | "}
+        {prompt.credit}
       </div>
       {/* <Fields /> */}
       <div className="flex gap-16">

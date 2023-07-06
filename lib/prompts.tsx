@@ -5,6 +5,11 @@ const prompts: PromptType[] = [
   {
     id: 1001,
     name: "Readme creator for your project",
+    credit: (
+      <a href="https://github.com/emredevsalot" target="_blank">
+        Credit
+      </a>
+    ),
     category: "Project",
     pretext:
       "I want you to act as a README.md file generator. I will give you information about my project and you will generate README.md file accordingly.\n\n",
