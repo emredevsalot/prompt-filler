@@ -1,5 +1,5 @@
 "use client";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 import { Metadata } from "next";
 import Link from "next/link";
@@ -45,9 +45,13 @@ const PromptPage = ({ params: { promptId } }: Params) => {
   const watchAllFields = watch();
   console.log(watchAllFields);
 
+  // Copy Prompt
+  const [isCopied, setIsCopied] = useState(false);
   const handleCopy = () => {
     if (textAreaRef.current) {
+      setIsCopied(true);
       navigator.clipboard.writeText(textAreaRef.current.value);
+      setTimeout(() => setIsCopied(false), 2000);
     }
   };
 
@@ -179,7 +183,7 @@ const PromptPage = ({ params: { promptId } }: Params) => {
             readOnly={true}
           ></textarea>
           <Button onClick={handleCopy} width="w-full">
-            Copy Prompt
+            {isCopied ? "Copied" : "Copy Prompt"}
           </Button>
         </div>
       </div>
