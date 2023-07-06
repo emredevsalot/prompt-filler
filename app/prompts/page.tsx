@@ -17,7 +17,7 @@ const PromptsPage = () => {
           <>
             <p key={prompt.id}>
               <Link href={`/prompts/${prompt.id}`}>
-                <Button>Prompt {prompt.id}</Button>
+                <Button>{prompt.name}</Button>
               </Link>
             </p>
             <br />

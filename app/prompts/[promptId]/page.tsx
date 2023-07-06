@@ -43,7 +43,7 @@ const PromptPage = ({ params: { promptId } }: Params) => {
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
   const watchAllFields = watch();
-  console.log(watchAllFields);
+  // console.log(watchAllFields);
 
   // Copy Prompt
   const [isCopied, setIsCopied] = useState(false);
@@ -62,6 +62,7 @@ const PromptPage = ({ params: { promptId } }: Params) => {
 
   const generateFinalText = () => {
     let finalText: string[] = [];
+    prompt.pretext ? finalText.push(prompt.pretext) : "";
     prompt.fields.map((item) => {
       let fullField: string = "";
 
@@ -73,11 +74,13 @@ const PromptPage = ({ params: { promptId } }: Params) => {
       fullField += item.before ? item.before + " " : "";
       fullField += watchAllFields[item.name];
       fullField += item.after ? " " + item.after : "";
-      fullField += ".";
+      // fullField += ".";
 
       finalText.push(fullField);
     });
-    return finalText.join("\n");
+
+    console.log(finalText);
+    return finalText.join(" ");
   };
 
   return (
@@ -88,6 +91,8 @@ const PromptPage = ({ params: { promptId } }: Params) => {
         </Link>
         {" | "}
         Prompt id: {promptId}
+        {" | "}
+        Prompt name: {prompt.name}
         {" | "}
         Category: {prompt.category}
       </div>
@@ -103,9 +108,9 @@ const PromptPage = ({ params: { promptId } }: Params) => {
                     <div className="my-5" key={f.name}>
                       <div>{f.name + ": "}</div>
                       <input
-                        className="w-full"
+                        className="w-full p-2 rounded"
                         type={f.type}
-                        placeholder={f.name}
+                        placeholder={f.placeholder ? f.placeholder : f.name}
                         {...register(f.name)}
                       />
                     </div>
@@ -115,7 +120,8 @@ const PromptPage = ({ params: { promptId } }: Params) => {
                     <div className="my-5" key={f.name}>
                       <div>{f.name + ": "}</div>
                       <textarea
-                        className="w-full"
+                        className="w-full p-2 rounded"
+                        placeholder={f.placeholder ? f.placeholder : f.name}
                         {...register(f.name)}
                         rows={3}
                       ></textarea>
@@ -182,6 +188,7 @@ const PromptPage = ({ params: { promptId } }: Params) => {
         {/* RIGHT */}
         <div className="flex flex-col gap-5 py-10 flex-1">
           <textarea
+            className="p-2"
             ref={textAreaRef}
             rows={20}
             value={generateFinalText()}
