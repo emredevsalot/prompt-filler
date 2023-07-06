@@ -1,6 +1,6 @@
 const prompts: PromptType[] = [
   {
-    id: 1,
+    id: 1001,
     category: "resume",
     fields: [
       {
@@ -37,7 +37,7 @@ const prompts: PromptType[] = [
     ],
   },
   {
-    id: 2,
+    id: 1002,
     category: "resume",
     fields: [
       { name: "text1", before: "[b1]", after: "[a1]", type: "text" },
