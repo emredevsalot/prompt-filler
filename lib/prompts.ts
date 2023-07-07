@@ -96,7 +96,30 @@ const prompts: PromptType[] = [
         before:
           "Here's my relevant information such as skills, work experience, projects, education etc.;\n\n",
         placeholder: "Skills, work experience, projects, education etc.",
-        after: "",
+      },
+    ],
+  },
+  {
+    id: 2003,
+    name: "Review and enhance my resume",
+    creditName: "emredevsalot",
+    creditUrl: "https://github.com/emredevsalot",
+    category: "Resume",
+    pretext:
+      "I want you to review my resume and answer the questions below, separate the answers with questions, and try to include examples from my resume in a before-after format;\n- What else can I add to stand out?\n- Is my resume Application Tracking System(ATS) friendly? Are there any more keywords that I can add?\n- Are there any other improvements or edits you can make?\n",
+    fields: [
+      {
+        name: "Job title",
+        type: "text",
+        before: "I want to apply for",
+        placeholder: "Frontend developer",
+        after: "jobs.",
+      },
+      {
+        name: "Resume",
+        type: "textarea",
+        before: "Here's my resume;\n\n",
+        placeholder: "Paste resume here",
       },
     ],
   },
