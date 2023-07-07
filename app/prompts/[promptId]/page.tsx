@@ -29,7 +29,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: "Prompt id: " + prompt?.id,
+    title: prompt?.name,
     description: `This is the page of prompt ${prompt?.id}.`,
   };
 }
@@ -96,7 +96,10 @@ const PromptPage = ({ params: { promptId } }: Params) => {
         {" | "}
         Category: {prompt.category}
         {" | "}
-        {prompt.credit}
+        {"Credit: "}
+        <a href={prompt.creditUrl} target="_blank">
+          {prompt.creditName}
+        </a>
       </div>
       {/* <Fields /> */}
       <div className="flex gap-16">

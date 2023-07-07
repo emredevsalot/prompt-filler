@@ -8,7 +8,8 @@ type CategoryType = (typeof Category)[keyof typeof Category];
 type PromptType = {
   id: number;
   name: string;
-  credit?: React.JSX.Element;
+  creditName?: string;
+  creditUrl?: string;
   category: CategoryType;
   pretext?: string;
   fields: FieldType[];
