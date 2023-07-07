@@ -314,6 +314,7 @@ const PromptPage = ({ params: { promptId } }: Params) => {
 
 export default PromptPage;
 
+//TODO: fix SSG (https://nextjs.org/docs/pages/building-your-application/rendering/static-site-generation)
 export async function generateStaticParams() {
   const allPrompts = prompts;
 
