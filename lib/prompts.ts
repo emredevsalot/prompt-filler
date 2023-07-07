@@ -50,6 +50,8 @@ const prompts: PromptType[] = [
   {
     id: 2001,
     name: "Bullet points for work experience",
+    creditName: "emredevsalot",
+    creditUrl: "https://github.com/emredevsalot",
     category: "Resume",
     pretext:
       "I want to write bullet points about my work experience to include in my resume.\n\nEach bullet point's structure should be 'Problem, Action and Result', and each of them should start with action verb in the beginning.\n\nHere's my work experience",
@@ -76,24 +78,25 @@ const prompts: PromptType[] = [
   // START_CATEGORY_Misc
   {
     id: 9001,
-    name: "Fields",
+    name: "Fields Example",
     category: "Misc",
     pretext: "This is the pretext",
     fields: [
       {
         name: "textarea",
         type: "textarea",
-        before: "[area_b]",
-        after: "[area_a]",
+        before: "[textarea_b]",
+        after: "[textarea_a]",
       },
-      { name: "text1", type: "text", before: "[b1]", after: "[a1]" },
-      { name: "text2", type: "text", before: "[b2]", after: "" },
-      { name: "text3", type: "text", before: "[b3]", after: "[a3]" },
+      { name: "text1", type: "text", before: "[text_b1]", after: "[text_a1]" },
+      { name: "text2", type: "text", before: "[text_b2]" },
+      { name: "text3", type: "text", after: "[text_a3]" },
+      { name: "text4", type: "text" },
       {
         name: "select1",
         type: "select",
-        before: "b_select1",
-        after: "a_select1",
+        before: "select_b1",
+        after: "select_a1",
         options: [
           { value: "one", label: "one" },
           { value: "two", label: "two" },
@@ -103,8 +106,8 @@ const prompts: PromptType[] = [
       {
         name: "select2",
         type: "multiselect",
-        before: "b_select2",
-        after: "a_select2",
+        before: "multiselect_b2",
+        after: "multiselect_a2",
         options: [
           { value: "one", label: "one" },
           { value: "two", label: "two" },
