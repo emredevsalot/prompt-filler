@@ -6,6 +6,7 @@ import slugify from "slugify";
 const prompts: PromptType[] = [
   // START_CATEGORY_Project
   {
+    id: 1001,
     name: "Readme creator for your project",
     creditName: "emredevsalot",
     creditUrl: "https://github.com/emredevsalot",
@@ -47,6 +48,7 @@ const prompts: PromptType[] = [
   // END_CATEGORY_Project
   // START_CATEGORY_Resume
   {
+    id: 2001,
     name: "Bullet points for work experience",
     category: "Resume",
     pretext:
@@ -73,6 +75,7 @@ const prompts: PromptType[] = [
   // END_CATEGORY_Resume
   // START_CATEGORY_Misc
   {
+    id: 9001,
     name: "Fields",
     category: "Misc",
     pretext: "This is the pretext",
