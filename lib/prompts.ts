@@ -74,6 +74,32 @@ const prompts: PromptType[] = [
       },
     ],
   },
+  {
+    id: 2002,
+    name: "Generate a summary for resume",
+    creditName: "emredevsalot",
+    creditUrl: "https://github.com/emredevsalot",
+    category: "Resume",
+    pretext: "Generate a summary section for my resume.",
+    fields: [
+      {
+        name: "Job title",
+        type: "text",
+        before: "I want to apply for",
+        placeholder: "Frontend developer",
+        after:
+          "jobs, so please generate it emphasizing on why I'm a good fit for the role.\n\n",
+      },
+      {
+        name: "Information",
+        type: "textarea",
+        before:
+          "Here's my relevant information such as skills, work experience, projects, education etc.;\n\n",
+        placeholder: "Skills, work experience, projects, education etc.",
+        after: "",
+      },
+    ],
+  },
   // END_CATEGORY_Resume
   // START_CATEGORY_Misc
   {
