@@ -1,9 +1,11 @@
 // "type" to enum
 // add select to have option to add non-existing option
 
+import slugify from "slugify";
+
 const prompts: PromptType[] = [
+  // START_CATEGORY_Project
   {
-    id: 1001,
     name: "Readme creator for your project",
     creditName: "emredevsalot",
     creditUrl: "https://github.com/emredevsalot",
@@ -42,9 +44,9 @@ const prompts: PromptType[] = [
       },
     ],
   },
-
+  // END_CATEGORY_Project
+  // START_CATEGORY_Resume
   {
-    id: 2002,
     name: "Bullet points for work experience",
     category: "Resume",
     pretext:
@@ -68,8 +70,9 @@ const prompts: PromptType[] = [
       },
     ],
   },
+  // END_CATEGORY_Resume
+  // START_CATEGORY_Misc
   {
-    id: 9999,
     name: "Fields",
     category: "Misc",
     pretext: "This is the pretext",
@@ -107,6 +110,39 @@ const prompts: PromptType[] = [
       },
     ],
   },
+  // END_CATEGORY_Misc
 ];
 
-export default prompts;
+// Add slugs dynamically
+
+// Create a cache object to store the slug values
+const slugCache: { [slug: string]: boolean } = {};
+
+// Function to generate a unique slug
+function generateUniqueSlug(name: string): string {
+  let slug = slugify(name, {
+    lower: true,
+    strict: true,
+  });
+
+  let count = 1;
+  let uniqueSlug = slug;
+  while (slugCache[uniqueSlug]) {
+    uniqueSlug = `${slug}-${count}`;
+    count++;
+  }
+
+  slugCache[uniqueSlug] = true; // Mark slug as used
+  return uniqueSlug;
+}
+
+// Generate the unique slugs for each object in the array
+const promptsWithSlug = prompts.map((prompt) => {
+  const slug = generateUniqueSlug(prompt.name);
+  return {
+    ...prompt,
+    slug,
+  };
+});
+
+export default promptsWithSlug;

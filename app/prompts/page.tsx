@@ -15,8 +15,8 @@ const PromptsPage = () => {
       {prompts.map((prompt) => {
         return (
           <>
-            <p key={prompt.id}>
-              <Link href={`/prompts/${prompt.id}`}>
+            <p key={prompt.slug}>
+              <Link href={`/prompts/${prompt.slug}`}>
                 <Button>{prompt.name}</Button>
               </Link>
             </p>

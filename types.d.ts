@@ -1,18 +1,18 @@
 const Category = {
-  Project: "Project", //1000+
-  Resume: "Resume", //2000+
-  Misc: "Misc", //9999
+  Project: "Project",
+  Resume: "Resume",
+  Misc: "Misc",
 } as const;
 type CategoryType = (typeof Category)[keyof typeof Category];
 
 type PromptType = {
-  id: number;
   name: string;
   creditName?: string;
   creditUrl?: string;
   category: CategoryType;
   pretext?: string;
   fields: FieldType[];
+  //slug: string; (added dynamically)
 };
 
 type FieldType = {

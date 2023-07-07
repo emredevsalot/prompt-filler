@@ -13,16 +13,16 @@ import Button from "@/app/components/Button";
 import prompts from "@/lib/prompts";
 
 type Params = {
-  params: { promptId: string };
+  params: { promptSlug: string };
 };
 
 export async function generateMetadata({
-  params: { promptId },
+  params: { promptSlug },
 }: Params): Promise<Metadata> {
-  const prompt = prompts.find((p) => p.id.toString() === promptId);
+  const prompt = prompts.find((p) => p.slug === promptSlug);
 
   // Metadata for not found page
-  if (!prompt?.id) {
+  if (!prompt) {
     return {
       title: "Prompt not found",
     };
@@ -30,14 +30,14 @@ export async function generateMetadata({
 
   return {
     title: prompt?.name,
-    description: `This is the page of prompt ${prompt?.id}.`,
+    description: `This is the page of prompt ${prompt?.name}.`,
   };
 }
 
-const PromptPage = ({ params: { promptId } }: Params) => {
-  const prompt = prompts.find((p) => p.id.toString() === promptId);
+const PromptPage = ({ params: { promptSlug } }: Params) => {
+  const prompt = prompts.find((p) => p.slug === promptSlug);
 
-  if (!prompt?.id) return notFound();
+  if (!prompt) return notFound();
 
   const { register, handleSubmit, control, watch } = useForm();
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
@@ -90,7 +90,7 @@ const PromptPage = ({ params: { promptId } }: Params) => {
           <Button>Go Back</Button>
         </Link>
         {" | "}
-        Prompt id: {promptId}
+        Prompt slug: {promptSlug}
         {" | "}
         Prompt name: {prompt.name}
         {" | "}
@@ -318,5 +318,5 @@ export default PromptPage;
 export async function generateStaticParams() {
   const allPrompts = prompts;
 
-  return allPrompts.map((prompt) => ({ promptId: prompt.id.toString() }));
+  return allPrompts.map((prompt) => ({ promptSlug: prompt.slug }));
 }
