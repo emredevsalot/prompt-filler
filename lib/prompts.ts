@@ -165,6 +165,24 @@ const prompts: PromptType[] = [
       },
     ],
   },
+  {
+    id: 9002,
+    name: "Enhance the prompt",
+    creditName: "emredevsalot",
+    creditUrl: "https://github.com/emredevsalot",
+    category: "Misc",
+    pretext:
+      "I want you to act as an excellent Prompt Engineer. Your task is to enhance the prompt I provide you. There will be placeholder values in the square brackets. The prompt will be used by you, ChatGPT. Enhance the prompt below and reply with only enhanced version of that prompt;\n\n",
+    fields: [
+      {
+        name: "Prompt",
+        type: "textarea",
+        before: '"',
+        placeholder: "Paste prompt here",
+        after: '"',
+      },
+    ],
+  },
   // END_CATEGORY_Misc
 ];
 
