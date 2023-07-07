@@ -96,7 +96,7 @@ const PromptPage = ({ params: { promptId } }: Params) => {
         {" | "}
         Category: {prompt.category}
         {" | "}
-        {"Credit: "}
+        {prompt.creditUrl && "Credit: "}
         <a href={prompt.creditUrl} target="_blank">
           {prompt.creditName}
         </a>
