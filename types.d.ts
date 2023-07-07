@@ -1,7 +1,7 @@
 const Category = {
-  Project: "Project",
-  Resume: "Resume",
-  Misc: "Misc",
+  Project: "Project", //1000+
+  Resume: "Resume", //2000+
+  Misc: "Misc", //9999
 } as const;
 type CategoryType = (typeof Category)[keyof typeof Category];
 

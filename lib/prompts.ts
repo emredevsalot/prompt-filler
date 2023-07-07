@@ -44,7 +44,7 @@ const prompts: PromptType[] = [
   },
 
   {
-    id: 1002,
+    id: 2002,
     name: "Bullet points for work experience",
     category: "Resume",
     pretext:
