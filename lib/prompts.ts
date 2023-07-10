@@ -149,6 +149,8 @@ const prompts: PromptType[] = [
     ],
   },
   // END_CATEGORY_Resume
+  // START_CATEGORY_Job_Application
+  // END_CATEGORY_Job_Application
   // START_CATEGORY_Misc
   {
     id: 9001,
