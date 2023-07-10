@@ -150,6 +150,23 @@ const prompts: PromptType[] = [
   },
   // END_CATEGORY_Resume
   // START_CATEGORY_Job_Application
+  {
+    id: 3001,
+    name: "How to prepare for this job interview",
+    creditName: "emredevsalot",
+    creditUrl: "https://github.com/emredevsalot",
+    category: "Job Application",
+    pretext:
+      "I have a job interview. I will provide you the job description below. How can I prepare for this job interview according to the job description?",
+    fields: [
+      {
+        name: "Job Description",
+        type: "textarea",
+        before: "Here's the job description;\n\n",
+        placeholder: "Paste job description here",
+      },
+    ],
+  },
   // END_CATEGORY_Job_Application
   // START_CATEGORY_Misc
   {
