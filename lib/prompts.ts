@@ -123,6 +123,31 @@ const prompts: PromptType[] = [
       },
     ],
   },
+  {
+    id: 2004,
+    name: "Cover letter for job application",
+    creditName: "tealhq.com",
+    creditUrl:
+      "https://www.tealhq.com/post/great-chatgpt-prompts-for-your-resume",
+    category: "Resume",
+    pretext:
+      "Create a cover letter for a job application using my resume and the job description below as a reference. The cover letter should be less than 150 words.",
+    fields: [
+      {
+        name: "Resume",
+        type: "textarea",
+        before: "Here's my resume;\n\n",
+        placeholder: "Paste resume here",
+        after: "\n\n",
+      },
+      {
+        name: "Job Description",
+        type: "textarea",
+        before: "Here's the job description;\n\n",
+        placeholder: "Paste job description here",
+      },
+    ],
+  },
   // END_CATEGORY_Resume
   // START_CATEGORY_Misc
   {
