@@ -167,6 +167,23 @@ const prompts: PromptType[] = [
       },
     ],
   },
+  {
+    id: 3002,
+    name: "Generate technical question for this job interview",
+    creditName: "emredevsalot",
+    creditUrl: "https://github.com/emredevsalot",
+    category: "Job Application",
+    pretext:
+      "I have a job interview. I will provide you the job description below. Can you generate a technical interview question according to the job description?",
+    fields: [
+      {
+        name: "Job Description",
+        type: "textarea",
+        before: "Here's the job description;\n\n",
+        placeholder: "Paste job description here",
+      },
+    ],
+  },
   // END_CATEGORY_Job_Application
   // START_CATEGORY_Misc
   {
