@@ -186,9 +186,9 @@ const prompts: PromptType[] = [
   {
     id: 3003,
     name: "Act as an interviewer for this job",
-    creditName: "Rick Wayne",
+    creditName: "awesome-chatgpt-prompts",
     creditUrl:
-      "https://medium.com/@rick.wayne.2022/chatgpt-act-as-position-interviewer-8155f8e5814",
+      "https://github.com/f/awesome-chatgpt-prompts#act-as-position-interviewer",
     category: "Interview",
     pretext:
       "I want you to act as an interviewer. I will be the candidate and you will ask me the interview questions",
