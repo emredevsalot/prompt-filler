@@ -6,7 +6,7 @@ const prompts: PromptType[] = [
   // START_CATEGORY_Project
   {
     id: 1001,
-    name: "Readme creator for your project",
+    name: "README file for my project",
     creditName: "emredevsalot",
     creditUrl: "https://github.com/emredevsalot",
     category: "Project",
@@ -48,7 +48,7 @@ const prompts: PromptType[] = [
   // START_CATEGORY_Resume
   {
     id: 2001,
-    name: "Bullet points for work experience",
+    name: "Bullet points for my work experience",
     creditName: "emredevsalot",
     creditUrl: "https://github.com/emredevsalot",
     category: "Resume",
@@ -75,7 +75,7 @@ const prompts: PromptType[] = [
   },
   {
     id: 2002,
-    name: "Generate a summary for resume",
+    name: "Summary for my resume",
     creditName: "emredevsalot",
     creditUrl: "https://github.com/emredevsalot",
     category: "Resume",
@@ -168,7 +168,7 @@ const prompts: PromptType[] = [
   },
   {
     id: 3002,
-    name: "Generate technical question for this job interview",
+    name: "Technical question for this job interview",
     creditName: "emredevsalot",
     creditUrl: "https://github.com/emredevsalot",
     category: "Interview",
