@@ -255,6 +255,24 @@ const prompts: PromptType[] = [
       },
     ],
   },
+  {
+    id: 4003,
+    name: "Improve variable names of my code",
+    creditName: "emredevsalot",
+    creditUrl: "https://github.com/emredevsalot",
+    category: "Coding",
+    pretext:
+      "I wrote the code below and I want you to improve variable names to be more readable and self-explanatory.",
+    fields: [
+      {
+        name: "Code",
+        type: "textarea",
+        before: "Here's the code;\n\n",
+        placeholder: "Paste code here",
+        after: "\n\n",
+      },
+    ],
+  },
   // END_CATEGORY_Coding
   // START_CATEGORY_Misc
   {
