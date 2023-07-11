@@ -149,13 +149,13 @@ const prompts: PromptType[] = [
     ],
   },
   // END_CATEGORY_Resume
-  // START_CATEGORY_Job_Application
+  // START_CATEGORY_Interview
   {
     id: 3001,
     name: "How to prepare for this job interview",
     creditName: "emredevsalot",
     creditUrl: "https://github.com/emredevsalot",
-    category: "Job Application",
+    category: "Interview",
     pretext:
       "I have a job interview. I will provide you the job description below. How can I prepare for this job interview according to the job description?",
     fields: [
@@ -172,7 +172,7 @@ const prompts: PromptType[] = [
     name: "Generate technical question for this job interview",
     creditName: "emredevsalot",
     creditUrl: "https://github.com/emredevsalot",
-    category: "Job Application",
+    category: "Interview",
     pretext:
       "I have a job interview. I will provide you the job description below. Can you generate a technical interview question according to the job description?",
     fields: [
@@ -190,7 +190,7 @@ const prompts: PromptType[] = [
     creditName: "Rick Wayne",
     creditUrl:
       "https://medium.com/@rick.wayne.2022/chatgpt-act-as-position-interviewer-8155f8e5814",
-    category: "Job Application",
+    category: "Interview",
     pretext:
       "I want you to act as an interviewer. I will be the candidate and you will ask me the interview questions",
     fields: [
@@ -211,7 +211,7 @@ const prompts: PromptType[] = [
       },
     ],
   },
-  // END_CATEGORY_Job_Application
+  // END_CATEGORY_Interview
   // START_CATEGORY_Misc
   {
     id: 9001,
