@@ -61,25 +61,30 @@ const PromptPage = ({ params: { promptSlug } }: Params) => {
   };
 
   const generateFinalText = () => {
-    let finalText: string[] = [];
-    prompt.pretext ? finalText.push(prompt.pretext) : "";
-    prompt.fields.map((item) => {
-      let fullField: string = "";
+    // Initialize finalText as an array to store the generated text
+    const finalText = prompt.fields.reduce(
+      (accumulatedText: string[], field) => {
+        const fieldName = field.name;
 
-      // If field is empty, do nothing.
-      if (!watchAllFields[item.name]) return;
-      // If multiselect is empty, do nothing:
-      if (watchAllFields[item.name].length == 0) return;
+        // Skip fields with no values or empty multiselect
+        if (
+          !watchAllFields[fieldName] ||
+          watchAllFields[fieldName].length === 0
+        ) {
+          return accumulatedText;
+        }
 
-      fullField += item.before ? item.before + " " : "";
-      fullField += watchAllFields[item.name];
-      fullField += item.after ? " " + item.after : "";
-      // fullField += ".";
+        const beforeText = field.before ? `${field.before} ` : "";
+        const afterText = field.after ? ` ${field.after}` : "";
+        const fullField = `${beforeText}${watchAllFields[fieldName]}${afterText}`;
 
-      finalText.push(fullField);
-    });
+        // Accumulate the generated text in the array
+        return [...accumulatedText, fullField];
+      },
+      prompt.pretext ? [prompt.pretext] : []
+    ); // Add prompt.pretext as the initial value if it exists
 
-    console.log(finalText);
+    // Join the array elements with a space to create the final text
     return finalText.join(" ");
   };
 
