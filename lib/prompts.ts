@@ -3,7 +3,7 @@
 import slugify from "slugify";
 
 const prompts: PromptType[] = [
-  // START_CATEGORY_Project
+  //#region Project
   {
     id: 1001,
     name: "README file for my project",
@@ -63,8 +63,8 @@ const prompts: PromptType[] = [
       },
     ],
   },
-  // END_CATEGORY_Project
-  // START_CATEGORY_Resume
+  //#endregion Project
+  //#region Resume
   {
     id: 2001,
     name: "Bullet points for my work experience",
@@ -166,8 +166,8 @@ const prompts: PromptType[] = [
       },
     ],
   },
-  // END_CATEGORY_Resume
-  // START_CATEGORY_Interview
+  //#endregion Resume
+  //#region Interview
   {
     id: 3001,
     name: "How to prepare for this job interview",
@@ -229,8 +229,8 @@ const prompts: PromptType[] = [
       },
     ],
   },
-  // END_CATEGORY_Interview
-  // START_CATEGORY_Coding
+  //#endregion Interview
+  //#region Coding
   {
     id: 4001,
     name: "Debug my code",
@@ -292,8 +292,8 @@ const prompts: PromptType[] = [
       },
     ],
   },
-  // END_CATEGORY_Coding
-  // START_CATEGORY_Misc
+  //#endregion Coding
+  //#region Misc
   {
     id: 9001,
     name: "Fields Example",
@@ -352,7 +352,7 @@ const prompts: PromptType[] = [
       },
     ],
   },
-  // END_CATEGORY_Misc
+  //#endregion Misc
 ];
 
 // Add slugs dynamically
