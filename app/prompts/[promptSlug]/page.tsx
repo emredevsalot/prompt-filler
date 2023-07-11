@@ -88,6 +88,15 @@ const PromptPage = ({ params: { promptSlug } }: Params) => {
     return finalText.join(" ");
   };
 
+  const creditLink = prompt.creditUrl ? (
+    <>
+      Credit:{" "}
+      <a href={prompt.creditUrl} target="_blank">
+        {prompt.creditName}
+      </a>
+    </>
+  ) : null;
+
   return (
     <>
       <div className="mt-2">
@@ -101,10 +110,7 @@ const PromptPage = ({ params: { promptSlug } }: Params) => {
         {" | "}
         Category: {prompt.category}
         {" | "}
-        {prompt.creditUrl && "Credit: "}
-        <a href={prompt.creditUrl} target="_blank">
-          {prompt.creditName}
-        </a>
+        {creditLink}
       </div>
       {/* <Fields /> */}
       <div className="flex gap-16">
