@@ -44,6 +44,25 @@ const prompts: PromptType[] = [
       },
     ],
   },
+  {
+    id: 1002,
+    name: "Commit message for task",
+    creditName: "awesome-chatgpt-prompts",
+    creditUrl:
+      "https://github.com/f/awesome-chatgpt-prompts#act-as-a-commit-message-generator",
+    category: "Project",
+    pretext:
+      "I want you to act as a commit message generator. I will provide you with information about the task, and I would like you to generate an appropriate commit message using the conventional commit format. Do not write any explanations or other words, just reply with the commit message.\n\n",
+    fields: [
+      {
+        name: "Information about task",
+        type: "textarea",
+        before: "Information about task:\n",
+        placeholder:
+          "I made a Button component to make it more reusable across the app",
+      },
+    ],
+  },
   // END_CATEGORY_Project
   // START_CATEGORY_Resume
   {
