@@ -184,6 +184,33 @@ const prompts: PromptType[] = [
       },
     ],
   },
+  {
+    id: 3003,
+    name: "Act as an interviewer for this job",
+    creditName: "Rick Wayne",
+    creditUrl:
+      "https://medium.com/@rick.wayne.2022/chatgpt-act-as-position-interviewer-8155f8e5814",
+    category: "Job Application",
+    pretext:
+      "I want you to act as an interviewer. I will be the candidate and you will ask me the interview questions",
+    fields: [
+      {
+        name: "Job title",
+        type: "text",
+        before: "for the",
+        placeholder: "Frontend developer",
+        after:
+          "position. I want you to only reply as the interviewer. Do not write all the conservation at once. I want you to only do the interview with me. Ask me the questions and wait for my answers. Do not write explanations. Ask me the questions one by one like an interviewer does and wait for my answers.",
+      },
+      {
+        name: "Job Description",
+        type: "textarea",
+        before: "\nHere's the job description;\n\n",
+        placeholder: "Paste job description here",
+        after: "\n\nMy first sentence is “Hi”",
+      },
+    ],
+  },
   // END_CATEGORY_Job_Application
   // START_CATEGORY_Misc
   {
