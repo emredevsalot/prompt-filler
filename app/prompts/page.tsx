@@ -9,21 +9,33 @@ export const metadata: Metadata = {
   description: "...",
 };
 
+const Category = {
+  Project: "Project", //1000+
+  Resume: "Resume", //2000+
+  Job_Application: "Job Application", //3000+
+  Misc: "Misc", //9000+
+};
+const categoryValues = Object.values(Category);
+
+const getCategoryItems = (categoryName: string) => {
+  return prompts.filter((prompt) => prompt.category === categoryName);
+};
+
 const PromptsPage = () => {
   const content = (
     <section className="my-2">
-      {prompts.map((prompt) => {
-        return (
-          <>
-            <p key={prompt.slug}>
+      {categoryValues.map((category) => (
+        <div>
+          <div className="text-3xl py-2">{category}</div>
+          {getCategoryItems(category).map((prompt) => (
+            <div className="inline-block pr-4 pb-4" key={prompt.slug}>
               <Link href={`/prompts/${prompt.slug}`}>
                 <Button>{prompt.name}</Button>
               </Link>
-            </p>
-            <br />
-          </>
-        );
-      })}
+            </div>
+          ))}
+        </div>
+      ))}
     </section>
   );
 
