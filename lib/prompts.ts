@@ -1,4 +1,3 @@
-// "type" to enum
 // add select to have option to add non-existing option
 
 import slugify from "slugify";
@@ -212,6 +211,8 @@ const prompts: PromptType[] = [
     ],
   },
   // END_CATEGORY_Interview
+  // START_CATEGORY_Coding
+  // END_CATEGORY_Coding
   // START_CATEGORY_Misc
   {
     id: 9001,
