@@ -212,6 +212,31 @@ const prompts: PromptType[] = [
   },
   // END_CATEGORY_Interview
   // START_CATEGORY_Coding
+  {
+    id: 4001,
+    name: "Debug my code",
+    creditName: "emredevsalot",
+    creditUrl: "https://github.com/emredevsalot",
+    category: "Coding",
+    pretext:
+      "I wrote the code below and i am getting an error, how can I debug it?",
+    fields: [
+      {
+        name: "Code",
+        type: "textarea",
+        before: "Here's the code;\n\n",
+        placeholder: "Paste code here",
+        after: "\n\n",
+      },
+      {
+        name: "Error",
+        type: "textarea",
+        before: "Here's the error;\n\n",
+        placeholder: "Paste error here",
+        after: "",
+      },
+    ],
+  },
   // END_CATEGORY_Coding
   // START_CATEGORY_Misc
   {
