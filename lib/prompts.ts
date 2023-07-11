@@ -237,6 +237,24 @@ const prompts: PromptType[] = [
       },
     ],
   },
+  {
+    id: 4002,
+    name: "Refactor my code",
+    creditName: "emredevsalot",
+    creditUrl: "https://github.com/emredevsalot",
+    category: "Coding",
+    pretext:
+      "I wrote the code below and I want to refactor it to improve code quality, maintainability and reusability. How can I refactor it?",
+    fields: [
+      {
+        name: "Code",
+        type: "textarea",
+        before: "Here's the code;\n\n",
+        placeholder: "Paste code here",
+        after: "\n\n",
+      },
+    ],
+  },
   // END_CATEGORY_Coding
   // START_CATEGORY_Misc
   {
