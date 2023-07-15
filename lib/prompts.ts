@@ -63,6 +63,29 @@ const prompts: PromptType[] = [
       },
     ],
   },
+  {
+    id: 1003,
+    name: "Architecture for project",
+    creditName: "emredevsalot",
+    creditUrl: "https://github.com/emredevsalot",
+    category: "Project",
+    pretext:
+      "Act as an excellent Fullstack Software Developer with a wealth of knowledge and experience in developing various applications. I will give you information about the project I have in mind. You will design the architecture and write the code to bring this app to life.\n\n",
+    fields: [
+      {
+        name: "Technologies I want to use",
+        type: "text",
+        before: "Technologies I want to use: ",
+        placeholder: "React, NextJS, Typescript, Tailwind",
+        after: "\n\n",
+      },
+      {
+        name: "Project Information",
+        type: "textarea",
+        before: "Here's the project information:\n\n",
+      },
+    ],
+  },
   //#endregion Project
   //#region Resume
   {
