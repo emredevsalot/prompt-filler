@@ -26,3 +26,4 @@ As a user of ChatGPT, I found myself spending a significant amount of time craft
 
 - [ ] Add "Contribution Guidelines"
 - [ ] Add "Installation"
+- [ ] Saving certain data to local storage (resume, project information, code etc.)
