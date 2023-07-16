@@ -2,6 +2,34 @@ import Link from "next/link";
 import Button from "./components/Button";
 
 const Home = () => {
+  const features = [
+    {
+      emoji: "⚡️",
+      title: "Streamlined Prompt Generation",
+      description: "Effortlessly generate prompts with ease.",
+    },
+    {
+      emoji: "🌟",
+      title: "User-Friendly Interface",
+      description: "Intuitive and easy-to-use interface.",
+    },
+    {
+      emoji: "🗂️",
+      title: "Versatile Prompt Categories",
+      description: "Wide range of prompt categories.",
+    },
+    {
+      emoji: "⏱️",
+      title: "Time-Saving Efficiency",
+      description: "Boost productivity and save time.",
+    },
+    {
+      emoji: "🎨",
+      title: "Enhanced Creativity",
+      description: "Unleash your creativity and imagination.",
+    },
+  ];
+
   return (
     <>
       {/* HERO SECTION */}
@@ -21,32 +49,20 @@ const Home = () => {
         </div>
       </section>
       {/* FEATURES SECTION */}
-      <section className="py-8 px-4 text-center text-lg lg:text-xl lg:py-16 lg:px-12">
-        <p>
-          <span className="font-extrabold">
-            ⚡️ Streamlined Prompt Generation:{" "}
-          </span>
-          Effortlessly generate prompts with ease.
-        </p>
-        <p>
-          <span className="font-extrabold">🌟 User-Friendly Interface: </span>
-          Intuitive and easy-to-use interface.
-        </p>
-        <p>
-          <span className="font-extrabold">
-            🗂️ Versatile Prompt Categories:{" "}
-          </span>
-          Wide range of prompt categories.
-        </p>
-        <p>
-          <span className="font-extrabold">⏱️ Time-Saving Efficiency: </span>
-          Boost productivity and save time.
-        </p>
-        <p>
-          <span className="font-extrabold">🎨 Enhanced Creativity: </span>
-          Unleash your creativity and imagination.
-        </p>
-      </section>
+      <div className="my-8">
+        <h2 className="text-2xl text-center font-semibold mb-4">Features</h2>
+        <div className="flex flex-wrap justify-center w-full">
+          {features.map((feature, index) => (
+            <div key={index} className="w-full p-6 border sm:w-1/2 lg:w-1/3">
+              <div className="flex items-center mb-4">
+                <span className="text-2xl mr-2">{feature.emoji}</span>
+                <h3 className="text-lg font-semibold">{feature.title}</h3>
+              </div>
+              <p>{feature.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     </>
   );
 };
