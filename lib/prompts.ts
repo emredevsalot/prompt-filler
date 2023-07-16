@@ -71,7 +71,7 @@ const prompts: PromptType[] = [
     creditUrl: "https://github.com/emredevsalot",
     category: "Project",
     pretext:
-      "Act as an excellent Fullstack Software Developer with a wealth of knowledge and experience in developing various applications. I will give you information about the project I have in mind. You will design the architecture and write the code to bring this app to life.\n\n",
+      "Act as an excellent Fullstack Software Engineer. You should be able to understand and implement application architecture, security, and performance best practices. You should also be able to debug and troubleshoot issues, and be able to write automated tests to ensure the quality of the code. I will give you information about the project I have in mind. You will design the architecture and write the code to bring this app to life.\n\n",
     fields: [
       {
         name: "Technologies I want to use",
@@ -262,7 +262,7 @@ const prompts: PromptType[] = [
     creditUrl: "https://github.com/emredevsalot",
     category: "Coding",
     pretext:
-      "I wrote the code below and i am getting an error, how can I debug it?",
+      "Act as an excellent Fullstack Software Engineer. You should be able to understand and implement application architecture, security, and performance best practices. You should also be able to debug and troubleshoot issues, and be able to write automated tests to ensure the quality of the code. I wrote the code below and I am getting an error, how can I debug it?",
     fields: [
       {
         name: "Code",
@@ -287,7 +287,7 @@ const prompts: PromptType[] = [
     creditUrl: "https://github.com/emredevsalot",
     category: "Coding",
     pretext:
-      "I wrote the code below and I want to refactor it to improve code quality, maintainability and reusability. How can I refactor it?",
+      "Act as an excellent Fullstack Software Engineer. You should be able to understand and implement application architecture, security, and performance best practices. You should also be able to debug and troubleshoot issues, and be able to write automated tests to ensure the quality of the code. I wrote the code below and I want to refactor it to improve code quality, maintainability and reusability. How can I refactor it?",
     fields: [
       {
         name: "Code",
@@ -305,7 +305,7 @@ const prompts: PromptType[] = [
     creditUrl: "https://github.com/emredevsalot",
     category: "Coding",
     pretext:
-      "I wrote the code below and I want you to improve variable names to be more readable and self-explanatory.",
+      "Act as an excellent Fullstack Software Engineer. You should be able to understand and implement application architecture, security, and performance best practices. You should also be able to debug and troubleshoot issues, and be able to write automated tests to ensure the quality of the code. I wrote the code below and I want you to improve variable names to be more readable and self-explanatory.",
     fields: [
       {
         name: "Code",
