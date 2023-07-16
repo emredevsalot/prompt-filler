@@ -1,6 +1,5 @@
 // add select to have option to add non-existing option
 
-import { headers } from "next/dist/client/components/headers";
 import slugify from "slugify";
 
 const prompts: PromptType[] = [
