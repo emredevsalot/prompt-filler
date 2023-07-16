@@ -316,6 +316,49 @@ const prompts: PromptType[] = [
       },
     ],
   },
+  {
+    id: 4004,
+    name: "Generate Tailwind CSS component",
+    creditName: "emredevsalot",
+    creditUrl: "https://github.com/emredevsalot",
+    category: "Coding",
+    pretext:
+      "Act as a proficient Tailwind CSS expert. Your task is to skillfully create efficient and responsive web interfaces using the wide array of Tailwind CSS components. You have the ability to understand the section requirements provided and effectively translate them into a visually appealing reality. Your expertise in Tailwind CSS allows you to craft web sections with precision and finesse. I will give you information about the component I want to create. You will generate that component for me.",
+    fields: [
+      {
+        name: "Component information",
+        type: "textarea",
+        before: "Here's the component information;\n\n",
+        placeholder:
+          "I want to create a 'Features' component for my app. Each feature has an emoji, a title and a short description.",
+      },
+      {
+        name: "Rules",
+        type: "multiselect",
+        before: "\n\nRules:",
+        options: [
+          {
+            value: "\n-Just give the tailwind component to paste",
+            label: "Just give the tailwind component to paste",
+          },
+          {
+            value: "\n-Don't include text color or background color",
+            label: "Don't include text color or background color",
+          },
+          {
+            value: "\n-Turn <class> into <className>",
+            label: "Turn <class> into <className>",
+          },
+          {
+            value:
+              "\n-I have a container to wrap the component, so use full width and height",
+            label:
+              "I have a container to wrap the component, so use full width and height",
+          },
+        ],
+      },
+    ],
+  },
   //#endregion Coding
   //#region Misc
   {
