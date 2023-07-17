@@ -240,8 +240,11 @@ const prompts: PromptType[] = [
         type: "text",
         before: "for the",
         placeholder: "Frontend developer",
-        after:
-          "position. I want you to only reply as the interviewer. Do not write all the conservation at once. I want you to only do the interview with me. Ask me the questions and wait for my answers. Do not write explanations. Ask me the questions one by one like an interviewer does and wait for my answers.",
+        after: `position.\n\n I want you to only reply as the interviewer. Do not write all the conservation at once. I want you to only do the interview with me. Ask me the questions and wait for my answers. Do not write explanations. 
+          
+        After I give you an answer, you will give review it regarding how clear it is and explain what I could do to improve it using a language compatible with my seniority level. Do not mention that you will review my answer.
+          
+        Ask me the questions one by one like an interviewer does and wait for my answers.`,
       },
       {
         name: "Job Description",
