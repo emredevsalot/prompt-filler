@@ -34,8 +34,8 @@ type Params = {
 //   };
 // }
 
-const PromptPage = ({ params: { promptSlug } }: Params) => {
-  const prompt = prompts.find((p) => p.slug === promptSlug);
+const PromptPage = ({ params }: { params: { promptSlug: string } }) => {
+  const prompt = prompts.find((p) => p.slug === params.promptSlug);
 
   if (!prompt) return notFound();
 
@@ -104,7 +104,7 @@ const PromptPage = ({ params: { promptSlug } }: Params) => {
           <Button>Go Back</Button>
         </Link>
         {" | "}
-        Prompt slug: {promptSlug}
+        Prompt slug: {params.promptSlug}
         {" | "}
         Prompt name: {prompt.name}
         {" | "}
