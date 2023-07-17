@@ -369,10 +369,67 @@ const prompts: PromptType[] = [
       Don't forget to illustrate your explanations with easily understandable analogies whenever you think it will add value to the explanation. Make sure to teach this stuff as the world's greatest teachers would. Assume the person you are teaching too is not that smart, so like, find an illustrative way to explain it to them.`,
     fields: [
       {
-        name: "Code snipper or concept",
+        name: "Code snippet or concept",
         type: "textarea",
         before: "\n\nHere's the thing I want to learn about:\n\n",
         placeholder: "useState hook in React JS",
+      },
+    ],
+  },
+  {
+    id: 4006,
+    name: "Comment for my code",
+    creditName: "I hate breakfast",
+    creditUrl: "https://flowgpt.com/prompt/-g04TdJ4CRgRleXk2Rx79",
+    category: "Coding",
+    pretext: `Act as an excellent Fullstack Software Engineer. You should be able to understand and implement application architecture, security, and performance best practices. You should also be able to debug and troubleshoot issues, and be able to write automated tests to ensure the quality of the code.
+
+    I will provide a piece of code. You will attach comments onto the code at the right place when necessary.`,
+    fields: [
+      {
+        name: "Rules",
+        type: "multiselect",
+        before: "\n\nThe comment should follow the rules below:",
+        options: [
+          {
+            value: "\n-Comments should not duplicate the code.",
+            label: "Comments should not duplicate the code.",
+          },
+          {
+            value: "\n-Good comments do not excuse unclear code.",
+            label: "Good comments do not excuse unclear code.",
+          },
+          {
+            value:
+              "\n-If you can't write a clear comment, point it out to me as [Warning]",
+            label:
+              "If you can't write a clear comment, point it out to me as [Warning]",
+          },
+          {
+            value: "\n-Only comment on the function level or on complex logic",
+            label: "Only comment on the function level or on complex logic",
+          },
+          {
+            value: "\n-Explain unidiomatic code in comments.",
+            label: "Explain unidiomatic code in comments.",
+          },
+          {
+            value: "\n-Use comments to mark incomplete implementations.",
+            label: "Use comments to mark incomplete implementations.",
+          },
+          {
+            value: "\n-Do not comment on clear code",
+            label: "Do not comment on clear code",
+          },
+        ],
+      },
+      {
+        name: "The code",
+        type: "textarea",
+        before: "\n\nHere's the code:\n\n",
+        placeholder: `const getCategoryItems = (categoryName: string) => {
+          return prompts.filter((prompt) => prompt.category === categoryName);
+        };`,
       },
     ],
   },
