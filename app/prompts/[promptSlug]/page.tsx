@@ -37,7 +37,7 @@ type Params = {
 const PromptPage = ({ params }: { params: { promptSlug: string } }) => {
   const prompt = prompts.find((p) => p.slug === params.promptSlug);
 
-  if (!prompt) return notFound();
+  // if (!prompt) return notFound();
 
   const { register, handleSubmit, control, watch } = useForm();
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
@@ -62,7 +62,7 @@ const PromptPage = ({ params }: { params: { promptSlug: string } }) => {
 
   const generateFinalText = () => {
     // Initialize finalText as an array to store the generated text
-    const finalText = prompt.fields.reduce(
+    const finalText = prompt?.fields.reduce(
       (accumulatedText: string[], field) => {
         const fieldName = field.name;
 
@@ -85,14 +85,14 @@ const PromptPage = ({ params }: { params: { promptSlug: string } }) => {
     ); // Add prompt.pretext as the initial value if it exists
 
     // Join the array elements with a space to create the final text
-    return finalText.join(" ");
+    return finalText?.join(" ");
   };
 
-  const creditLink = prompt.creditUrl ? (
+  const creditLink = prompt?.creditUrl ? (
     <>
       Credit:{" "}
-      <a href={prompt.creditUrl} target="_blank">
-        {prompt.creditName}
+      <a href={prompt?.creditUrl} target="_blank">
+        {prompt?.creditName}
       </a>
     </>
   ) : null;
@@ -106,9 +106,9 @@ const PromptPage = ({ params }: { params: { promptSlug: string } }) => {
         {" | "}
         Prompt slug: {params.promptSlug}
         {" | "}
-        Prompt name: {prompt.name}
+        Prompt name: {prompt?.name}
         {" | "}
-        Category: {prompt.category}
+        Category: {prompt?.category}
         {" | "}
         {creditLink}
       </div>
@@ -117,7 +117,7 @@ const PromptPage = ({ params }: { params: { promptSlug: string } }) => {
         {/* LEFT */}
         <div className="flex flex-col py-10 flex-1">
           <form onSubmit={handleSubmit((data: any) => console.log(data))}>
-            {prompt.fields.map((f) => {
+            {prompt?.fields.map((f) => {
               switch (f.type) {
                 case "text":
                   return (
