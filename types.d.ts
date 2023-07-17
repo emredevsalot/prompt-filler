@@ -15,7 +15,7 @@ type PromptType = {
   category: CategoryType;
   pretext?: string;
   fields: FieldType[];
-  //slug: string; (added dynamically)
+  slug?: string; //(added dynamically)
 };
 
 type FieldType = {
