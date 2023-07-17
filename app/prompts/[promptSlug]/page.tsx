@@ -16,23 +16,23 @@ type Params = {
   params: { promptSlug: string };
 };
 
-export async function generateMetadata({
-  params: { promptSlug },
-}: Params): Promise<Metadata> {
-  const prompt = prompts.find((p) => p.slug === promptSlug);
+// export async function generateMetadata({
+//   params: { promptSlug },
+// }: Params): Promise<Metadata> {
+//   const prompt = prompts.find((p) => p.slug === promptSlug);
 
-  // Metadata for not found page
-  if (!prompt) {
-    return {
-      title: "Prompt not found",
-    };
-  }
+//   // Metadata for not found page
+//   if (!prompt) {
+//     return {
+//       title: "Prompt not found",
+//     };
+//   }
 
-  return {
-    title: prompt?.name,
-    description: `This is the page of prompt ${prompt?.name}.`,
-  };
-}
+//   return {
+//     title: prompt?.name,
+//     description: `This is the page of prompt ${prompt?.name}.`,
+//   };
+// }
 
 const PromptPage = ({ params: { promptSlug } }: Params) => {
   const prompt = prompts.find((p) => p.slug === promptSlug);
