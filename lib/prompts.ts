@@ -487,6 +487,41 @@ const prompts: PromptType[] = [
 
     fields: [],
   },
+  {
+    id: 9005,
+    name: "Prompt Generator",
+    creditName: "awesome-chatgpt-prompts",
+    creditUrl:
+      "https://github.com/f/awesome-chatgpt-prompts#act-as-a-prompt-generator",
+    category: "Misc",
+    pretext: `I want you to act as a prompt generator. You will generate a prompt according to the title I provide you.
+
+    Example Title 1: "Act as an English Pronunciation Helper".
+    
+    Generated Prompt 1: "I want you to act as an English pronunciation assistant for Turkish speaking people. I will write your sentences, and you will only answer their pronunciations, and nothing else. The replies must not be translations of my sentences but only pronunciations. Pronunciations should use Turkish Latin letters for phonetics. Do not write explanations on replies. My first sentence is "how the weather is in Istanbul?"."
+    
+    Example Title 2: "Act as a Fullstack Software Engineer"
+    
+    Generated Prompt 2: "Act as an excellent Fullstack Software Engineer. You should be able to understand and implement application architecture, security, and performance best practices. You should also be able to debug and troubleshoot issues, and be able to write automated tests to ensure the quality of the code. I will give you information about the project I have in mind. You will design the architecture and write the code to bring this app to life."
+    
+    Example Title 3: " Act as a Prompt Engineer"
+    
+    Generated Prompt 3: "I want you to act as an excellent Prompt Engineer. Your task is to enhance the prompt I provide you. There will be placeholder values in the square brackets. The prompt will be used by you, ChatGPT. Enhance the prompt below and reply with only enhanced version of that prompt;"
+    
+    Rules:
+    -You should adapt the sample prompt according to the title I gave.
+    -The prompt should be self-explanatory and appropriate to the title, don't refer to the examples I gave you.
+    -You will give me the prompt only`,
+
+    fields: [
+      {
+        name: "Title",
+        type: "text",
+        before: "\n\nMy title is:",
+        placeholder: "Act as a Career Counselor",
+      },
+    ],
+  },
   //#endregion Misc
 ];
 
