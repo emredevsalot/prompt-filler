@@ -326,7 +326,7 @@ const PromptPage = ({ params: { promptSlug } }: Params) => {
 export default PromptPage;
 
 //TODO: fix SSG (https://nextjs.org/docs/pages/building-your-application/rendering/static-site-generation)
-export async function generateStaticParams() {
+async function generateStaticParams() {
   const allPrompts = prompts;
 
   return allPrompts.map((prompt) => ({ promptSlug: prompt.slug }));
