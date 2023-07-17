@@ -34,7 +34,7 @@ type Params = {
 //   };
 // }
 
-const PromptPage = ({ params }: { params: { promptSlug: string } }) => {
+const PromptPage = ({ params }: Params) => {
   const prompt = prompts.find((p) => p.slug === params.promptSlug);
 
   console.log(params);
