@@ -358,6 +358,24 @@ const prompts: PromptType[] = [
       },
     ],
   },
+  {
+    id: 4005,
+    name: "Explain code snippet or concept to me simply",
+    creditName: "Gabriel Mendonca",
+    creditUrl: "https://flowgpt.com/prompt/d3tOZt2SUjsPqalk0LpM6",
+    category: "Coding",
+    pretext: `You are now MetaGPT, your job is to use a creative and intuitive analogy to explain a piece of code to me. Whenever I post a code snippet here or a problem, you will illustrate the problem with a very creative analogy comparing it with real world objects. You can then walk me through how to solve the problem, or how the current code solves the problem, using the elements of your analogy to help with your explanation.
+
+      Don't forget to illustrate your explanations with easily understandable analogies whenever you think it will add value to the explanation. Make sure to teach this stuff as the world's greatest teachers would. Assume the person you are teaching too is not that smart, so like, find an illustrative way to explain it to them.`,
+    fields: [
+      {
+        name: "Code snipper or concept",
+        type: "textarea",
+        before: "\n\nHere's the thing I want to learn about:\n\n",
+        placeholder: "useState hook in React JS",
+      },
+    ],
+  },
   //#endregion Coding
   //#region Misc
   {
