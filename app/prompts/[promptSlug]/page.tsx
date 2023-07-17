@@ -37,6 +37,9 @@ type Params = {
 const PromptPage = ({ params }: { params: { promptSlug: string } }) => {
   const prompt = prompts.find((p) => p.slug === params.promptSlug);
 
+  console.log(params);
+  console.log(prompt);
+
   // if (!prompt) return notFound();
 
   const { register, handleSubmit, control, watch } = useForm();
