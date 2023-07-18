@@ -1,8 +1,10 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+const prodConfig = {
   output: "export",
   // Add basePath
   basePath: "/prompt-filler",
 };
 
-module.exports = nextConfig;
+const devConfig = {};
+
+module.exports = process.env.NODE_ENV === "production" ? prodConfig : devConfig;
