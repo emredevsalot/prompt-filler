@@ -25,12 +25,3 @@ As a user of ChatGPT, I found myself spending a significant amount of time craft
 
 - Proper organization and categorization of prompts enhance usability.
 - Version control and collaboration tools (e.g., Git, GitHub) are essential for managing the project effectively.
-
-## TODO
-
-- [x] Add "Contribution Guidelines"
-- [ ] Add "Installation"
-- [ ] Saving certain data to local storage (resume, project information, code etc.)
-- [ ] Add metadata for prompt pages.
-- [ ] Fix `Fields Example` prompt to be more descriptive.
-- [ ] Fix Navbar background not going all the way to the sides.
