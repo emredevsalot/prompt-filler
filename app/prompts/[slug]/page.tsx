@@ -1,5 +1,6 @@
 import promptsWithSlug from "@/lib/prompts";
 import PromptPageContent from "./PromptPageContent";
+import { Metadata } from "next";
 
 type Params = {
   params: { slug: string };
@@ -12,6 +13,23 @@ export async function generateStaticParams() {
   }));
 }
 
+export async function generateMetadata({ params }: Params): Promise<Metadata> {
+  const { slug } = params;
+  const prompt = promptsWithSlug.find((p) => p.slug === slug);
+
+  // Metadata for not found page
+  if (!prompt) {
+    return {
+      title: "Prompt Filler",
+    };
+  }
+
+  return {
+    title: prompt?.name + " prompt for ChatGPT",
+    description: `This is the page of prompt ${prompt?.name}. Easily fill the prompt and copy to use in ChatGPT.`,
+  };
+}
+
 const PromptPage = ({ params }: Params) => {
   const { slug } = params;
   const prompt = promptsWithSlug.find((p) => p.slug === slug);
@@ -22,21 +40,3 @@ const PromptPage = ({ params }: Params) => {
 };
 
 export default PromptPage;
-
-// export async function generateMetadata({
-//   params: { promptSlug },
-// }: Params): Promise<Metadata> {
-//   const prompt = prompts.find((p) => p.slug === promptSlug);
-
-//   // Metadata for not found page
-//   if (!prompt) {
-//     return {
-//       title: "Prompt not found",
-//     };
-//   }
-
-//   return {
-//     title: prompt?.name,
-//     description: `This is the page of prompt ${prompt?.name}.`,
-//   };
-// }
