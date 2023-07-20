@@ -46,6 +46,14 @@ const Home = () => {
           <Link href="/prompts">
             <Button>Go to prompts</Button>
           </Link>
+          <div className="flex items-center justify-center">
+            <iframe
+              src="https://ghbtns.com/github-btn.html?user=emredevsalot&repo=prompt-filler&type=star&count=true&size=large"
+              width="110"
+              height="30"
+              title="GitHub"
+            ></iframe>
+          </div>
         </div>
       </section>
       {/* FEATURES SECTION */}
