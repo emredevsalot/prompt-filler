@@ -69,7 +69,7 @@ const PromptPageContent = (prompt: PromptType) => {
 
   return (
     <>
-      <div className="bg-red-800 py-4 flex justify-between items-center flex-col md:flex-row">
+      <div className="py-6 flex justify-between items-center flex-col md:flex-row">
         <h1>{prompt?.name}</h1>
         <div className="flex flex-shrink-0 flex-col items-end">
           <div>
