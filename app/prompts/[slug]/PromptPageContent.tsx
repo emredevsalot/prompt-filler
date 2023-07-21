@@ -69,9 +69,9 @@ const PromptPageContent = (prompt: PromptType) => {
 
   return (
     <>
-      <div className="py-6 flex justify-between items-center flex-col md:flex-row">
+      <div className="py-5 flex justify-between items-center text-center flex-col md:flex-row">
         <h1>{prompt?.name}</h1>
-        <div className="flex flex-shrink-0 flex-col items-end">
+        <div className="flex flex-shrink-0 flex-col items-center md:items-end">
           <div>
             <span className="font-bold">Category:</span> {prompt?.category}
           </div>
@@ -79,7 +79,7 @@ const PromptPageContent = (prompt: PromptType) => {
         </div>
       </div>
       {/* <Fields /> */}
-      <div className="flex gap-16">
+      <div className="flex gap-x-16 flex-col md:flex-row">
         {/* LEFT */}
         <div className="flex flex-col py-10 flex-1">
           <form onSubmit={handleSubmit((data: any) => console.log(data))}>
@@ -87,7 +87,7 @@ const PromptPageContent = (prompt: PromptType) => {
               switch (f.type) {
                 case "text":
                   return (
-                    <div className="my-5" key={f.name}>
+                    <div className="mb-5" key={f.name}>
                       <div>{f.name + ": "}</div>
                       <input
                         className="w-full p-2 rounded"
@@ -99,7 +99,7 @@ const PromptPageContent = (prompt: PromptType) => {
                   );
                 case "textarea":
                   return (
-                    <div className="my-5" key={f.name}>
+                    <div className="mb-5" key={f.name}>
                       <div>{f.name + ": "}</div>
                       <textarea
                         className="w-full p-2 rounded"
@@ -112,7 +112,7 @@ const PromptPageContent = (prompt: PromptType) => {
 
                 case "select":
                   return (
-                    <div className="my-5" key={f.name}>
+                    <div className="mb-5" key={f.name}>
                       <div>{f.name + ": "}</div>
                       <Controller
                         control={control}
@@ -134,7 +134,7 @@ const PromptPageContent = (prompt: PromptType) => {
                   );
                 case "multiselect":
                   return (
-                    <div className="my-5" key={f.name}>
+                    <div className="mb-5" key={f.name}>
                       <div>
                         <div>{f.name + ": "}</div>
                       </div>
@@ -168,7 +168,10 @@ const PromptPageContent = (prompt: PromptType) => {
           </form>
         </div>
         {/* RIGHT */}
-        <div className="flex flex-col gap-5 py-10 flex-1">
+        <div className="flex flex-col mt-6 gap-5 py-10 flex-1">
+          <Button onClick={handleCopy} width="w-full">
+            {isCopied ? "Copied" : "Copy Prompt"}
+          </Button>
           <textarea
             className="p-2"
             ref={textAreaRef}
@@ -176,9 +179,6 @@ const PromptPageContent = (prompt: PromptType) => {
             value={generateFinalText()}
             readOnly={true}
           ></textarea>
-          <Button onClick={handleCopy} width="w-full">
-            {isCopied ? "Copied" : "Copy Prompt"}
-          </Button>
         </div>
       </div>
     </>
