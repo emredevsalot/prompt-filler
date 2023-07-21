@@ -33,7 +33,7 @@ const Home = () => {
   return (
     <>
       {/* HERO SECTION */}
-      <section className="py-12 px-4 text-center lg:py-32 lg:px-12">
+      <section className="my-12 px-4 text-center lg:my-32">
         <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl lg:text-6xl">
           Prompt Filler
         </h1>
@@ -56,9 +56,37 @@ const Home = () => {
           </div>
         </div>
       </section>
+      {/* HOW IT WORKS SECTION */}
+      <section className="my-14 text-center flex flex-col">
+        <h2 className=" font-semibold mb-4">How It Works?</h2>
+        <dl className="mt-10 max-w-xl space-y-6 flex flex-col self-center">
+          <div>
+            <dt className="inline font-semibold">1) Select Your Prompt: </dt>
+            <dd className="inline">
+              Select any prompt from <Link href={"/prompts"}>prompts</Link>{" "}
+              page.
+            </dd>
+          </div>
+          <div>
+            <dt className="inline font-semibold">2) Fill in the Fields: </dt>
+            <dd className="inline">
+              Once you've selected a prompt, personalize it by filling the
+              fields according to your needs.
+            </dd>
+          </div>
+          <div>
+            <dt className="inline font-semibold">3) Copy and Use: </dt>
+            <dd className="inline">
+              With your prompt fully customized, it's now time to put it to use.
+              Simply copy the finalized prompt to your clipboard, and you're all
+              set!
+            </dd>
+          </div>
+        </dl>
+      </section>
       {/* FEATURES SECTION */}
-      <div className="my-8">
-        <h2 className="text-2xl text-center font-semibold mb-4">Features</h2>
+      <section className="my-14">
+        <h2 className="text-center mb-4">Features</h2>
         <div className="flex flex-wrap justify-center w-full">
           {features.map((feature, index) => (
             <div key={index} className="w-full p-6 border sm:w-1/2 lg:w-1/3">
@@ -70,7 +98,7 @@ const Home = () => {
             </div>
           ))}
         </div>
-      </div>
+      </section>
     </>
   );
 };
