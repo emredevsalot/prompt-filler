@@ -60,7 +60,7 @@ const PromptPageContent = (prompt: PromptType) => {
 
   const creditLink = prompt?.creditUrl ? (
     <>
-      Credit:{" "}
+      <span className="font-bold">Credit: </span>
       <a href={prompt?.creditUrl} target="_blank">
         {prompt?.creditName}
       </a>
@@ -69,18 +69,14 @@ const PromptPageContent = (prompt: PromptType) => {
 
   return (
     <>
-      <div className="mt-2">
-        <Link href="/prompts">
-          <Button>Go Back</Button>
-        </Link>
-        {" | "}
-        Prompt slug: {prompt?.slug}
-        {" | "}
-        Prompt name: {prompt?.name}
-        {" | "}
-        Category: {prompt?.category}
-        {" | "}
-        {creditLink}
+      <div className="bg-red-800 py-4 flex justify-between items-center flex-col md:flex-row">
+        <h1>{prompt?.name}</h1>
+        <div className="flex flex-shrink-0 flex-col items-end">
+          <div>
+            <span className="font-bold">Category:</span> {prompt?.category}
+          </div>
+          <div>{creditLink}</div>
+        </div>
       </div>
       {/* <Fields /> */}
       <div className="flex gap-16">

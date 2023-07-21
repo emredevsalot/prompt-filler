@@ -25,6 +25,23 @@ textarea {
   color: rgb(var(--background-rgb));
 }
 
+h1,
+h2,
+h3 {
+  font-weight: 600;
+}
+h1 {
+  font-size: 2.2rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
 .app {
   @apply relative flex flex-col max-w-7xl mx-auto sm:px-16 px-6;
 }
