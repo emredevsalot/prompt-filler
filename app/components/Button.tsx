@@ -15,7 +15,7 @@ const Button = ({
 }: ButtonProps) => {
   return (
     <button
-      className={`${outlineColor} rounded py-2 px-4 outline transition-transform enabled:hover:scale-105 ${width}`}
+      className={`${outlineColor} btn rounded py-2 px-4 outline transition-transform enabled:hover:scale-105 ${width}`}
       disabled={disabled}
       onClick={onClick}
     >

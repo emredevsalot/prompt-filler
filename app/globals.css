@@ -5,30 +5,39 @@
 :root {
   --foreground-rgb: 20, 20, 20;
   --background-rgb: 240, 240, 240;
+  --accent-rgb: 252, 105, 4;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 240, 240, 240;
     --background-rgb: 20, 20, 20;
+    --accent-rgb: 252, 205, 4;
   }
 }
 
 body,
-nav {
+nav,
+.btn {
   color: rgb(var(--foreground-rgb));
   background-color: rgb(var(--background-rgb));
 }
 
 input,
 textarea {
-  color: rgb(var(--background-rgb));
+  color: rgb(20, 20, 20);
+}
+
+a,
+.accent {
+  color: rgb(var(--accent-rgb));
 }
 
 h1,
 h2,
 h3 {
   font-weight: 600;
+  color: rgb(var(--accent-rgb));
 }
 h1 {
   font-size: 2.2rem;
