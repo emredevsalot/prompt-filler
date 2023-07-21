@@ -84,6 +84,43 @@ const Home = () => {
           </div>
         </dl>
       </section>
+      {/* HOW TO CONTRIBUTE SECTION */}
+      <section className="my-14 text-center flex flex-col">
+        <h2 className=" font-semibold mb-4">How to Contribute?</h2>
+        <dl className="mt-10 max-w-xl space-y-6 flex flex-col self-center">
+          <div>
+            <dt className="inline font-semibold">1) Github: </dt>
+            <dd className="inline">
+              You can add or enhance prompts through Github. Check{" "}
+              <Link
+                href="https://github.com/emredevsalot/prompt-filler/blob/master/CONTRIBUTING.md"
+                target="_blank"
+              >
+                CONTRIBUTING.md
+              </Link>
+            </dd>
+          </div>
+          <div>
+            <dt className="inline font-semibold">2) E-mail: </dt>
+            <dd className="inline">
+              If you don't use Github, you can{" "}
+              <Link href="mailto:emredevsalot@gmail.com" target="_blank">
+                send an e-mail to emredevsalot@gmail.com
+              </Link>{" "}
+              to propose new prompts or give feedback.
+            </dd>
+          </div>
+          <div>
+            <dt className="inline font-semibold">3) Spread the Word: </dt>
+            <dd className="inline">
+              If you find "PromptFiller" useful and believe in its potential,
+              share it with your friends, colleagues, and on social media. By
+              spreading the word, you contribute to a larger user base and
+              foster a thriving community around the app.
+            </dd>
+          </div>
+        </dl>
+      </section>
       {/* FEATURES SECTION */}
       <section className="my-14">
         <h2 className="text-center mb-4">Features</h2>
