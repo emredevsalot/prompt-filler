@@ -26,5 +26,5 @@ textarea {
 }
 
 .app {
-  @apply relative z-10 flex flex-col max-w-7xl mx-auto sm:px-16 px-6;
+  @apply relative flex flex-col max-w-7xl mx-auto sm:px-16 px-6;
 }
