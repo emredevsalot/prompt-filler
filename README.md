@@ -2,11 +2,12 @@
 
 Prompt Filler is a user-friendly app that **simplifies** the process of generating and completing prompts for ChatGPT, **saving you time and effort** in crafting engaging and effective prompts for various purposes.
 
-⚡️ **Streamlined Prompt Generation**: Effortlessly generate prompts with ease.<br>
-🌟 **User-Friendly Interface**: Intuitive and easy-to-use interface.<br>
-🗂️ **Versatile Prompt Categories**: Wide range of prompt categories.<br>
-⏱️ **Time-Saving Efficiency**: Boost productivity and save time.<br>
-🎨 **Enhanced Creativity**: Unleash your creativity and imagination.<br>
+💾 **Save Reusable Fields**: Efficiently store and retrieve reusable fields in local storage. (resume, job description, code snippet, project information) <br/>
+⚡️ **Streamlined Prompt Generation**: Effortlessly generate prompts with ease.<br/>
+🌟 **User-Friendly Interface**: Intuitive and easy-to-use interface.<br/>
+🗂️ **Versatile Prompt Categories**: Wide range of prompt categories.<br/>
+⏱️ **Time-Saving Efficiency**: Boost productivity and save time.<br/>
+🎨 **Enhanced Creativity**: Unleash your creativity and imagination.<br/>
 
 ## Do you want to add or enhance prompts?
 
