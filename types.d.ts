@@ -19,6 +19,7 @@ type PromptType = {
 };
 
 type FieldType = {
+  id?: string;
   name: string;
   type: string;
   before?: string;

@@ -1,6 +1,43 @@
-// add select to have option to add non-existing option
-
 import slugify from "slugify";
+
+//#region Fields to save to localStorage and their ids
+export const localStorageFieldIds = [
+  "projectInformation",
+  "resume",
+  "jobDescription",
+  "codeSnippet",
+];
+const projectInformationField: FieldType = {
+  id: "projectInformation",
+  name: "Project Information",
+  type: "textarea",
+  placeholder: "Project Information",
+  before: "Here's the information about my project:\n",
+};
+const resumeField: FieldType = {
+  id: "resume",
+  name: "Resume",
+  type: "textarea",
+  before: "Here's my resume;\n\n",
+  placeholder: "Paste resume here",
+  after: "\n\n",
+};
+const jobDescriptionField: FieldType = {
+  id: "jobDescription",
+  name: "Job Description",
+  type: "textarea",
+  before: "Here's the job description;\n\n",
+  placeholder: "Paste job description here",
+};
+const codeSnippetField: FieldType = {
+  id: "codeSnippet",
+  name: "Code Snippet",
+  type: "textarea",
+  before: "Here's the code;\n\n",
+  placeholder: "Paste code here",
+  after: "\n\n",
+};
+//#endregion Project
 
 const prompts: PromptType[] = [
   //#region Project
@@ -36,12 +73,7 @@ const prompts: PromptType[] = [
           { value: "[Roadmap]", label: "[Roadmap]" },
         ],
       },
-      {
-        name: "Information about my project",
-        type: "textarea",
-        placeholder: "<Project Information>",
-        before: "Here's the information about my project:\n",
-      },
+      projectInformationField,
     ],
   },
   {
@@ -79,11 +111,7 @@ const prompts: PromptType[] = [
         placeholder: "React, NextJS, Typescript, Tailwind",
         after: "\n\n",
       },
-      {
-        name: "Project Information",
-        type: "textarea",
-        before: "Here's the project information:\n\n",
-      },
+      projectInformationField,
     ],
   },
   //#endregion Project
@@ -125,6 +153,7 @@ const prompts: PromptType[] = [
     fields: [
       {
         name: "Job title",
+        id: "jobTitle",
         type: "text",
         before: "I want to apply for",
         placeholder: "Frontend developer",
@@ -133,6 +162,7 @@ const prompts: PromptType[] = [
       },
       {
         name: "Information",
+        id: "information",
         type: "textarea",
         before:
           "Here's my relevant information such as skills, work experience, projects, education etc.;\n\n",
@@ -156,12 +186,7 @@ const prompts: PromptType[] = [
         placeholder: "Frontend developer",
         after: "jobs.",
       },
-      {
-        name: "Resume",
-        type: "textarea",
-        before: "Here's my resume;\n\n",
-        placeholder: "Paste resume here",
-      },
+      resumeField,
     ],
   },
   {
@@ -173,21 +198,7 @@ const prompts: PromptType[] = [
     category: "Resume",
     pretext:
       "Create a cover letter for a job application using my resume and the job description below as a reference. The cover letter should be less than 150 words.",
-    fields: [
-      {
-        name: "Resume",
-        type: "textarea",
-        before: "Here's my resume;\n\n",
-        placeholder: "Paste resume here",
-        after: "\n\n",
-      },
-      {
-        name: "Job Description",
-        type: "textarea",
-        before: "Here's the job description;\n\n",
-        placeholder: "Paste job description here",
-      },
-    ],
+    fields: [resumeField, jobDescriptionField],
   },
   //#endregion Resume
   //#region Interview
@@ -199,14 +210,7 @@ const prompts: PromptType[] = [
     category: "Interview",
     pretext:
       "I have a job interview. I will provide you the job description below. How can I prepare for this job interview according to the job description?",
-    fields: [
-      {
-        name: "Job Description",
-        type: "textarea",
-        before: "Here's the job description;\n\n",
-        placeholder: "Paste job description here",
-      },
-    ],
+    fields: [jobDescriptionField],
   },
   {
     id: 3002,
@@ -216,14 +220,7 @@ const prompts: PromptType[] = [
     category: "Interview",
     pretext:
       "I have a job interview. I will provide you the job description below. Can you generate a technical interview question according to the job description?",
-    fields: [
-      {
-        name: "Job Description",
-        type: "textarea",
-        before: "Here's the job description;\n\n",
-        placeholder: "Paste job description here",
-      },
-    ],
+    fields: [jobDescriptionField],
   },
   {
     id: 3003,
@@ -244,15 +241,9 @@ const prompts: PromptType[] = [
           
         After I give you an answer, you will give review it regarding how clear it is and explain what I could do to improve it using a language compatible with my seniority level. Do not mention that you will review my answer.
           
-        Ask me the questions one by one like an interviewer does and wait for my answers.`,
+        Ask me the questions one by one like an interviewer does and wait for my answers. My first sentence is “Hi”`,
       },
-      {
-        name: "Job Description",
-        type: "textarea",
-        before: "\nHere's the job description;\n\n",
-        placeholder: "Paste job description here",
-        after: "\n\nMy first sentence is “Hi”",
-      },
+      jobDescriptionField,
     ],
   },
   //#endregion Interview
@@ -266,13 +257,7 @@ const prompts: PromptType[] = [
     pretext:
       "Act as an excellent Fullstack Software Engineer. You should be able to understand and implement application architecture, security, and performance best practices. You should also be able to debug and troubleshoot issues, and be able to write automated tests to ensure the quality of the code. I wrote the code below and I am getting an error, how can I debug it?",
     fields: [
-      {
-        name: "Code",
-        type: "textarea",
-        before: "Here's the code;\n\n",
-        placeholder: "Paste code here",
-        after: "\n\n",
-      },
+      codeSnippetField,
       {
         name: "Error",
         type: "textarea",
@@ -290,15 +275,7 @@ const prompts: PromptType[] = [
     category: "Coding",
     pretext:
       "Act as an excellent Fullstack Software Engineer. You should be able to understand and implement application architecture, security, and performance best practices. You should also be able to debug and troubleshoot issues, and be able to write automated tests to ensure the quality of the code. I wrote the code below and I want to refactor it to improve code quality, maintainability and reusability. How can I refactor it?",
-    fields: [
-      {
-        name: "Code",
-        type: "textarea",
-        before: "Here's the code;\n\n",
-        placeholder: "Paste code here",
-        after: "\n\n",
-      },
-    ],
+    fields: [codeSnippetField],
   },
   {
     id: 4003,
@@ -308,15 +285,7 @@ const prompts: PromptType[] = [
     category: "Coding",
     pretext:
       "Act as an excellent Fullstack Software Engineer. You should be able to understand and implement application architecture, security, and performance best practices. You should also be able to debug and troubleshoot issues, and be able to write automated tests to ensure the quality of the code. I wrote the code below and I want you to improve variable names to be more readable and self-explanatory.",
-    fields: [
-      {
-        name: "Code",
-        type: "textarea",
-        before: "Here's the code;\n\n",
-        placeholder: "Paste code here",
-        after: "\n\n",
-      },
-    ],
+    fields: [codeSnippetField],
   },
   {
     id: 4004,
@@ -426,14 +395,7 @@ const prompts: PromptType[] = [
           },
         ],
       },
-      {
-        name: "The code",
-        type: "textarea",
-        before: "\n\nHere's the code:\n\n",
-        placeholder: `const getCategoryItems = (categoryName: string) => {
-          return prompts.filter((prompt) => prompt.category === categoryName);
-        };`,
-      },
+      codeSnippetField,
     ],
   },
   //#endregion Coding

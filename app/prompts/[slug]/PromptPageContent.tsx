@@ -1,19 +1,57 @@
 "use client";
-import React, { useRef, useState } from "react";
-
-import Link from "next/link";
-
-import Button from "@/app/components/Button";
-
-import { Controller, useForm } from "react-hook-form";
+import React, { useEffect, useRef, useState } from "react";
 import Select from "react-select";
+import { Controller, useForm } from "react-hook-form";
+
+import { localStorageFieldIds } from "@/lib/prompts";
+import Button from "@/app/components/Button";
 
 const PromptPageContent = (prompt: PromptType) => {
   const { register, handleSubmit, control, watch } = useForm();
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
   const watchAllFields = watch();
-  // console.log(watchAllFields);
+
+  //#region localStorage
+  // Initializing the "localFieldValues" state
+  // with the data stored in the browser's local storage. (If there are any)
+  const [localFieldValues, setLocalFieldValues] = useState(() => {
+    if (typeof window !== "undefined") {
+      const storedValues = window.localStorage.getItem("form");
+      if (storedValues) return JSON.parse(storedValues);
+    }
+  });
+
+  // If there are any local storage fields,
+  // update "localFieldValues" state with their values.
+  // (in handleCopy function)
+  const setLocalStorageFieldValues = () => {
+    localStorageFieldIds.map((id) => {
+      let field = document.getElementById(id) as HTMLInputElement;
+      if (!field) return;
+      setLocalFieldValues((previousValues: any) => ({
+        ...previousValues,
+        [id]: field?.value,
+      }));
+    });
+  };
+
+  // TODO: making a state change refreshes final text area
+  // according to localStorage on page refresh. Find a way
+  // to do it without unused state.
+  const [finalText, setFinalText] = useState("");
+  // Save "localFieldValues" to localStorage for future use(each time "localFieldValues" change).
+  useEffect(() => {
+    try {
+      if (typeof window !== "undefined") {
+        window.localStorage.setItem("form", JSON.stringify(localFieldValues));
+        setFinalText(generateFinalText());
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }, [localFieldValues]);
+  //#endregion
 
   // Copy Prompt
   const [isCopied, setIsCopied] = useState(false);
@@ -23,6 +61,7 @@ const PromptPageContent = (prompt: PromptType) => {
       try {
         setIsCopied(true);
         navigator.clipboard.writeText(textAreaRef.current.value);
+        setLocalStorageFieldValues();
         setTimeout(() => setIsCopied(false), 2000);
       } catch (error) {
         console.error("Failed to copy text:", error);
@@ -90,8 +129,12 @@ const PromptPageContent = (prompt: PromptType) => {
                     <div className="mb-5" key={f.name}>
                       <div>{f.name + ": "}</div>
                       <input
+                        id={f.id}
                         className="w-full p-2 rounded"
                         type={f.type}
+                        defaultValue={
+                          f.id && localFieldValues ? localFieldValues[f.id] : ""
+                        }
                         placeholder={f.placeholder ? f.placeholder : f.name}
                         {...register(f.name)}
                       />
@@ -102,7 +145,11 @@ const PromptPageContent = (prompt: PromptType) => {
                     <div className="mb-5" key={f.name}>
                       <div>{f.name + ": "}</div>
                       <textarea
+                        id={f.id}
                         className="w-full p-2 rounded"
+                        defaultValue={
+                          f.id && localFieldValues ? localFieldValues[f.id] : ""
+                        }
                         placeholder={f.placeholder ? f.placeholder : f.name}
                         {...register(f.name)}
                         rows={3}
