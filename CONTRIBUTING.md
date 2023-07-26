@@ -57,6 +57,7 @@ type PromptType = {
 
 ```typescript
 type FieldType = {
+  id?: string;
   name: string;
   type: string;
   before?: string;
@@ -66,6 +67,7 @@ type FieldType = {
 };
 ```
 
+- **id** (optional): Used only if it is a field to save to local storage for reusability. (See at the top of the `lib/prompts.ts` file. You can use predefined fields in your prompt.(`"projectInformationField", "resumeField", "jobDescriptionField", "codeSnippetField"`))
 - **name**: The name of the field.
 - **type**: The type of field. Choose from "text", "textarea", "select" or "multiselect".
 - **before** (optional): Text to display before the user input for the field.
