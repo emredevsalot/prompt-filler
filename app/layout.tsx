@@ -5,8 +5,9 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Prompt Project",
-  description: "Prompt project description",
+  title: "Prompt Filler",
+  description:
+    "Simplify the process of generating and completing prompts for ChatGPT, save time and effort in crafting engaging and effective prompts for various purposes.",
 };
 
 export default function RootLayout({
