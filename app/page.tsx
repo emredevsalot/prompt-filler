@@ -4,6 +4,12 @@ import Button from "./components/Button";
 const Home = () => {
   const features = [
     {
+      emoji: "💾",
+      title: "Save Reusable Fields",
+      description:
+        "Efficiently store and retrieve reusable fields in local storage.",
+    },
+    {
       emoji: "⚡️",
       title: "Streamlined Prompt Generation",
       description: "Effortlessly generate prompts with ease.",
