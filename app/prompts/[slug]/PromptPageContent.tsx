@@ -18,7 +18,15 @@ const PromptPageContent = (prompt: PromptType) => {
   const [localFieldValues, setLocalFieldValues] = useState(() => {
     if (typeof window !== "undefined") {
       const storedValues = window.localStorage.getItem("form");
-      if (storedValues) return JSON.parse(storedValues);
+      try {
+        if (storedValues && storedValues !== undefined) {
+          return JSON.parse(storedValues);
+        } else {
+          return {};
+        }
+      } catch (err: any) {
+        console.log("Error: ", err.message);
+      }
     }
   });
 
