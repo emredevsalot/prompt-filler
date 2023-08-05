@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 import prompts from "@/lib/prompts";
-import Button from "@/app/components/Button";
+import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   title: "All Prompts",
@@ -33,7 +33,7 @@ const PromptsPage = () => {
             {getCategoryItems(category).map((prompt) => (
               <div className="inline-block pr-4 pb-4" key={prompt.slug}>
                 <Link href={`/prompts/${prompt.slug}`}>
-                  <Button>{prompt.name}</Button>
+                  <Button variant="outline">{prompt.name}</Button>
                 </Link>
               </div>
             ))}

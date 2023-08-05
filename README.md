@@ -19,7 +19,8 @@ As a user of ChatGPT, I found myself spending a significant amount of time craft
 
 ## Technologies Used
 
-- NextJS, Tailwind, Typescript
+- NextJS, Typescript
+- Tailwind, shadcn/ui
 - react-hook-form, react-select, slugify
 
 ## Lessons Learned

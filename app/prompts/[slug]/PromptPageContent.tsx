@@ -1,10 +1,14 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
-import Select from "react-select";
+import { useEffect, useRef, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import { ReactSelectShadcn } from "@/components/ui/react-select-shadcn";
+
 import { localStorageFieldIds } from "@/lib/prompts";
-import Button from "@/app/components/Button";
 
 const PromptPageContent = (prompt: PromptType) => {
   const { register, handleSubmit, control, watch } = useForm();
@@ -135,10 +139,9 @@ const PromptPageContent = (prompt: PromptType) => {
                 case "text":
                   return (
                     <div className="mb-5" key={f.name}>
-                      <div>{f.name + ": "}</div>
-                      <input
+                      <Label htmlFor={f.name}>{f.name}: </Label>
+                      <Input
                         id={f.id}
-                        className="w-full p-2 rounded"
                         type={f.type}
                         defaultValue={
                           f.id && localFieldValues ? localFieldValues[f.id] : ""
@@ -151,32 +154,30 @@ const PromptPageContent = (prompt: PromptType) => {
                 case "textarea":
                   return (
                     <div className="mb-5" key={f.name}>
-                      <div>{f.name + ": "}</div>
-                      <textarea
+                      <Label htmlFor={f.name}>{f.name}: </Label>
+                      <Textarea
                         id={f.id}
-                        className="w-full p-2 rounded"
                         defaultValue={
                           f.id && localFieldValues ? localFieldValues[f.id] : ""
                         }
                         placeholder={f.placeholder ? f.placeholder : f.name}
                         {...register(f.name)}
                         rows={3}
-                      ></textarea>
+                      />
                     </div>
                   );
 
                 case "select":
                   return (
                     <div className="mb-5" key={f.name}>
-                      <div>{f.name + ": "}</div>
+                      <Label htmlFor={f.name}>{f.name}: </Label>
                       <Controller
                         control={control}
                         defaultValue={""}
                         name={f.name}
                         render={({ field: { onChange, value } }) => (
-                          <Select
-                            instanceId={f.name}
-                            className="text-black"
+                          <ReactSelectShadcn
+                            createAble
                             value={f.options?.filter((c) =>
                               value.includes(c.value)
                             )}
@@ -190,22 +191,19 @@ const PromptPageContent = (prompt: PromptType) => {
                 case "multiselect":
                   return (
                     <div className="mb-5" key={f.name}>
-                      <div>
-                        <div>{f.name + ": "}</div>
-                      </div>
+                      <Label htmlFor={f.name}>{f.name}: </Label>
                       <Controller
                         control={control}
                         defaultValue={[]}
                         name={f.name}
                         render={({ field: { onChange, value } }) => (
-                          <Select
-                            instanceId={f.name}
-                            className="text-black"
-                            value={f.options?.filter((c: any) =>
+                          <ReactSelectShadcn
+                            createAble
+                            value={f.options?.filter((c) =>
                               value.includes(c.value)
                             )}
                             onChange={(val) =>
-                              onChange(val.map((c) => c.value))
+                              onChange(val.map((c: any) => c.value))
                             }
                             options={f.options}
                             isMulti
@@ -224,16 +222,15 @@ const PromptPageContent = (prompt: PromptType) => {
         </div>
         {/* RIGHT */}
         <div className="flex flex-col mt-6 gap-5 py-10 flex-1">
-          <Button onClick={handleCopy} width="w-full">
+          <Button onClick={handleCopy} variant={"outline"}>
             {isCopied ? "Copied" : "Copy Prompt"}
           </Button>
-          <textarea
-            className="p-2"
+          <Textarea
             ref={textAreaRef}
             rows={20}
             value={generateFinalText()}
             readOnly={true}
-          ></textarea>
+          />
         </div>
       </div>
     </>

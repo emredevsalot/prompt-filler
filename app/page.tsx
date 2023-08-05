@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Button from "./components/Button";
+import { Button } from "@/components/ui/button";
 
 const Home = () => {
   const features = [
@@ -50,7 +50,7 @@ const Home = () => {
         </p>
         <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
           <Link href="/prompts">
-            <Button>Go to prompts</Button>
+            <Button variant="outline">Go to prompts</Button>
           </Link>
           <div className="flex items-center justify-center">
             <iframe
