@@ -7,7 +7,13 @@ const Navbar = () => {
     <nav className="sticky py-6 top-0 z-10 bg-background">
       <div className="container flex items-center justify-between flex-col md:flex-row">
         <h1 className="text-3xl font-bold mb-2 md:mb-0">
-          <Link href="/">Prompt Filler</Link>
+          {process.env.NODE_ENV === "production" ? (
+            <Link href="https://emredevsalot.github.io/prompt-filler">
+              Prompt Filler
+            </Link>
+          ) : (
+            <Link href="/">Prompt Filler</Link>
+          )}
         </h1>
         <div className="flex items-center gap-4">
           <Link href="/prompts">
