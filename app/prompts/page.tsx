@@ -25,6 +25,11 @@ const getCategoryItems = (categoryName: string) => {
 const PromptsPage = () => {
   const content = (
     <section className="my-2">
+      <Link href="/">
+        <Button variant="outline">Home</Button>
+      </Link>
+      <Link href="/">Prompt Filler</Link>
+
       <h1 className="text-center">All Prompts</h1>
       {categoryValues.map((category) => (
         <div>

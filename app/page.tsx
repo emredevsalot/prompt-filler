@@ -38,6 +38,10 @@ const Home = () => {
 
   return (
     <>
+      <Link href="/">
+        <Button variant="outline">Home</Button>
+      </Link>
+      <Link href="/">Prompt Filler</Link>
       {/* HERO SECTION */}
       <section className="my-12 px-4 text-center lg:my-32">
         <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl lg:text-6xl">
