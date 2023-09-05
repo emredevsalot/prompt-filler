@@ -200,6 +200,22 @@ const prompts: PromptType[] = [
       "Create a cover letter for a job application using my resume and the job description below as a reference. The cover letter should be less than 150 words.",
     fields: [resumeField, jobDescriptionField],
   },
+  {
+    id: 2005,
+    name: "Job description keywords",
+    creditName: "emredevsalot",
+    creditUrl: "https://github.com/emredevsalot",
+    category: "Resume",
+    pretext: `Act act as an expert Chief Human Resources Officer at a tech company.
+
+You are using an Application Tracking System that filters top 10% job applicants according to the match with their resume and the job description. Your job is to find all the relevant keywords and phrases about the given job description according to the rules below:
+Rules:
+- Only the keywords and phrases that can be found in a resume.
+- Don't include company name.
+- Give me only the keywords.
+- Format of your response should be a single sentence.(Example: keyword1, keyword2, keyword3, keyword4)\n\n`,
+    fields: [jobDescriptionField],
+  },
   //#endregion Resume
   //#region Interview
   {
