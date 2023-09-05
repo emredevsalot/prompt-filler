@@ -224,11 +224,12 @@ Rules:
     category: "Resume",
     pretext: `Act as an expert at creating ATS-friendly resumes. You will receive keywords and a resume. Your task is to incorporate keywords to the sections, according to the rules below:
 
-- Ensure that the keywords are seamlessly woven into the resume sections while maintaining a handmade and personalized touch, reflecting my unique skills and experiences.
+- Ensure that the keywords are naturally woven into the resume sections reflecting my unique skills and experiences.
 - Exact match is very important.
 - Don't put the same keyword more than twice.
 - Keep "skills" section as a list separated with commas.
-- Show the added keywords as bold text.\n\n`,
+- Show the added keywords as bold text.
+- You don't have to necessarily add the keywords at the end of the sections. You can add them anywhere in the sentences.\n\n`,
     fields: [
       {
         name: "Keywords",
