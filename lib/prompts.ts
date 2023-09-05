@@ -216,6 +216,30 @@ Rules:
 - Format of your response should be a single sentence.(Example: keyword1, keyword2, keyword3, keyword4)\n\n`,
     fields: [jobDescriptionField],
   },
+  {
+    id: 2006,
+    name: "Optimize resume according to job description",
+    creditName: "emredevsalot",
+    creditUrl: "https://github.com/emredevsalot",
+    category: "Resume",
+    pretext: `Act as an expert at creating ATS-friendly resumes. You will receive keywords and a resume. Your task is to incorporate keywords to the sections, according to the rules below:
+
+- Ensure that the keywords are seamlessly woven into the resume sections while maintaining a handmade and personalized touch, reflecting my unique skills and experiences.
+- Exact match is very important.
+- Don't put the same keyword more than twice.
+- Keep "skills" section as a list separated with commas.
+- Show the added keywords as bold text.\n\n`,
+    fields: [
+      {
+        name: "Keywords",
+        placeholder: "Keywords used in the job description",
+        type: "textarea",
+        before: "Keywords:\n\n",
+        after: "\n\n",
+      },
+      resumeField,
+    ],
+  },
   //#endregion Resume
   //#region Interview
   {
